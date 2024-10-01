@@ -12,7 +12,7 @@
 
     <h2>Hola</h2>
     <?php
-        include("controlador.php");
+        include("controladorLogin.php");
         include("conexion.php");
     ?>
     <p>Inicia session</p>
