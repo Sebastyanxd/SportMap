@@ -4,21 +4,23 @@ include("conexion.php");
 
 if (isset($_POST['register'])) {
 
+    // Verifica que las claves existan en el array $_POST antes de usarlas
     if (
-        strlen($_POST['name']) >= 1 &&
-        strlen($_POST['email']) >= 1 &&
-        strlen($_POST['direction']) >= 1 &&
-        strlen($_POST['phone']) >= 1 &&
-        strlen($_POST['password']) >= 1 
+        isset($_POST['Nombre'], $_POST['Email'], $_POST['Direccion'], $_POST['Telefono'], $_POST['Contrasena']) &&
+        strlen($_POST['Nombre']) >= 1 &&
+        strlen($_POST['Email']) >= 1 &&
+        strlen($_POST['Direccion']) >= 1 &&
+        strlen($_POST['Telefono']) >= 1 &&
+        strlen($_POST['Contrasena']) >= 1 
     ) {
-        $name = trim($_POST['name']);
-        $email = trim($_POST['email']);
-        $direction = trim($_POST['direction']);
-        $phone = trim($_POST['phone']);
-        $password = trim($_POST['password']);
+        $name = trim($_POST['Nombre']);
+        $email = trim($_POST['Email']);
+        $direction = trim($_POST['Direccion']);
+        $phone = trim($_POST['Telefono']);
+        $password = trim($_POST['Contrasena']);
 
         // Verificar si el email ya existe en la base de datos
-        $consulta_email = $conexion->prepare("SELECT * FROM datos WHERE email = ?");
+        $consulta_email = $conexion->prepare("SELECT * FROM usuarios WHERE Email = ?");
         $consulta_email->bind_param("s", $email);
         $consulta_email->execute();
         $resultado_email = $consulta_email->get_result();
@@ -32,7 +34,7 @@ if (isset($_POST['register'])) {
             $fecha = date("Y-m-d");
 
             // Guardar la contraseña hasheada en la base de datos
-            $consulta = $conexion->prepare("INSERT INTO datos (nombre, email, direccion, telefono, contrasena, fecha) VALUES (?, ?, ?, ?, ?, ?)");
+            $consulta = $conexion->prepare("INSERT INTO usuarios (Nombre, Email, Direccion, Telefono, Contrasena, FechaRegistro) VALUES (?, ?, ?, ?, ?, ?)");
             $consulta->bind_param("ssssss", $name, $email, $direction, $phone, $hashed_password, $fecha);
 
             if ($consulta->execute()) {
@@ -57,4 +59,3 @@ if (isset($_POST['register'])) {
     }
 }
 ?>
-
