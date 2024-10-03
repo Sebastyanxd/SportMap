@@ -10,7 +10,7 @@
 
     <form method="post" >
 
-    <h2>Hola</h2>
+    <h2>Registrate</h2>
     <p>Inicia tu registro</p>
 
 

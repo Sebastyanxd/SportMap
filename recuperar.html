@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #555;
+        }
+
+        input[type="email"] {
+            width: calc(100% - 20px); /* Reduce el ancho total para agregar margen */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 0 auto 15px; /* Centrar y añadir margen inferior */
+            display: block; /* Asegura que el input ocupe el ancho completo */
+        }
+
+        input[type="submit"] {
+            width: calc(100% - 20px); /* Reduce el ancho total para agregar margen */
+            padding: 10px;
+            background-color: #2980b9;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            display: block; /* Asegura que el botón ocupe el ancho completo */
+            margin: 0 auto; /* Centrar el botón */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3498db;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function showAlert(event) {
+            event.preventDefault(); // Evita que el formulario se envíe de inmediato
+            const email = document.getElementById('email').value;
+            if (email) {
+                alert(`Se enviará un correo a ${email} para restablecer su contraseña.`);
+                // Aquí puedes agregar la lógica para enviar el correo
+                // (por ejemplo, una llamada a un servidor)
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Recuperar Contraseña</h2>
+        <form onsubmit="showAlert(event)">
+            <label for="email">Ingresa tu correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+            <input type="submit" value="Enviar">
+        </form>
+        <a href="login.php" class="back-link">Volver al inicio de sesión</a>
+    </div>
+
+</body>
+</html>
+
+
+

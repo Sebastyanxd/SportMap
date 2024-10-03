@@ -1,4 +1,9 @@
 <?php 
+// Verificar si ya hay una sesión iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start(); // Iniciar sesión solo si no está iniciada
+}
+
 include("conexion.php");
 
 if (!empty($_POST["login"])) {
@@ -20,7 +25,8 @@ if (!empty($_POST["login"])) {
 
             // Verificar la contraseña hasheada
             if (password_verify($password, $datos->contrasena)) {
-                header("Location: inicio.php");
+                $_SESSION['email'] = $email; // Guardar el email en la sesión
+                header("Location: index.php");
                 exit();
             } else {
                 echo 'La contraseña es incorrecta.';

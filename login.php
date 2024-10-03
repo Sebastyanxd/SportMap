@@ -1,3 +1,13 @@
+<?php
+session_start(); // Iniciar sesión
+
+// Verificar si la sesión está activa
+if (isset($_SESSION['email'])) {
+    header("Location: index.php"); // Redirigir a index.php si ya está autenticado
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,33 +20,30 @@
 
     <form method="post" >
 
-    <h2>Hola</h2>
+    <h2>Bienvenido a "SportMap"</h2>
     <?php
         include("controladorLogin.php");
         include("conexion.php");
     ?>
-    <p>Inicia session</p>
+    <p>Inicia sesión</p>
 
    <div class="input-wrapper">
-        <input type="email" name="email" placeholder="Email">
+        <input type="email" name="email" placeholder="Email" required>
         <img class="input-icon" src="images/email.svg" alt="">
     </div>
 
     <div class="input-wrapper">
-        <input type="password" name="password" placeholder="Contrasena">
+        <input type="password" name="password" placeholder="Contraseña" required>
         <img class="input-icon" src="images/password.svg" alt="">
     </div>
 
     <div class="input-wrapper">
-        <a href="">Olvide mi contrasena</a>
+        <a href="recuperar.html">Olvidé mi contraseña</a>
+        <a href="registro.php">No tienes cuenta?</a>
     </div>
 
     <input class="btn" type="submit" name="login" value="INICIAR SESION">
     </form>
 
-    
-
-
-    
 </body>
 </html>
