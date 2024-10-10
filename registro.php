@@ -10,32 +10,31 @@
 
     <form method="post" >
 
-    <h2>Registrate</h2>
+    <h2>Regístrate</h2>
     <p>Inicia tu registro</p>
 
-
     <div class="input-wrapper">
-        <input type="text" name="name" placeholder="Nombre">
+        <input type="text" name="Nombre" placeholder="Nombre" required>
         <img class="input-icon" src="images/name.svg" alt="">
     </div>
 
     <div class="input-wrapper">
-        <input type="email" name="email" placeholder="Email">
+        <input type="email" name="Email" placeholder="Email" required>
         <img class="input-icon" src="images/email.svg" alt="">
     </div>
 
     <div class="input-wrapper">
-        <input type="text" name="direction" placeholder="Direccion">
+        <input type="text" name="Direccion" placeholder="Dirección" required>
         <img class="input-icon" src="images/direction.svg" alt="">
     </div>
 
     <div class="input-wrapper">
-        <input type="tel" name="phone" placeholder="telefono">
+        <input type="tel" name="Telefono" placeholder="Teléfono" required>
         <img class="input-icon" src="images/phone.svg" alt="">
     </div>
 
     <div class="input-wrapper">
-        <input type="password" name="password" placeholder="Contrasena">
+        <input type="password" name="Contrasena" placeholder="Contraseña" required>
         <img class="input-icon" src="images/password.svg" alt="">
     </div>
 
@@ -45,8 +44,6 @@
     <?php
         include("registrar.php");
     ?>
-
-
     
 </body>
 </html>

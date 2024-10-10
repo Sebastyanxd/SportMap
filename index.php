@@ -9,123 +9,290 @@ if (!isset($_SESSION['email'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - Mundo Deportivo</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-
-        nav {
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #2980b9;
-            margin: 0 15px;
-            font-size: 1.2em;
-        }
-
-        nav a:hover {
-            color: #3498db;
-        }
-
-        .hero {
-            background-image: url('deporte.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 400px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
-
-        .hero h2 {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px 20px;
-            font-size: 3em;
-        }
-
-        .content {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .content h2 {
-            font-size: 2.2em;
-            margin-bottom: 20px;
-        }
-
-        .content p {
-            font-size: 1.2em;
-            line-height: 1.5;
-            color: #555;
-        }
-
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            position: absolute;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+    <title>SportMaps</title>
+    <link rel="stylesheet" href="style3.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
 
-    <header>
-        <h1>Mundo Deportivo</h1>
-        <nav>
-            <a href="index.php">Inicio</a>
-            <a href="mapa.php">Mapa</a>
-            <a href="#">Agendar</a>
-            <a href="contacto.php">Contacto</a>
-            <a href="logout.php">Cerrar sesión</a>
 
+    <header class="header">
+        <a href="#home" class="logo"> Sport
+            <span>Maps</span></a>
+
+        <i class='bx bx-menu' id="menu-icon"></i>
+
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#services">Servicios</a>
+            <a href="mapa.php">Mapa</a>
+            <a href="#contact">Contacto</a>
+            <a href="logout.php">Cerrar sesion</a>
         </nav>
     </header>
 
-    <section class="hero">
-        <h2>Vive la Pasión del Deporte</h2>
+    <section class="home" id="home">
+        <div class="home-content">
+            <h1>hi, It's <span>Maps</span></h1>
+            <h3 class="text-animation">I'm a <span>
+                </span></h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus accusantium aperiam molestiae. Quis
+                maxime nemo voluptas cumque assumenda libero, possimus asperiores, deserunt aliquam eveniet nesciunt
+                debitis quibusdam nulla ut et!</p>
+
+            <div class="social-icons">
+                <a href="#"><i class='bx bx-link'></i></a>
+                <a href="#"><i class='bx bxs-store'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+                <a href="#"><i class='bx bxs-car-garage'></i></a>
+            </div>
+
+            <div class="btn-group">
+                <a href="#" class="btn">Hire</a>
+                <a href="#contact" class="btn">Contacto</a>
+            </div>
+        </div>
+        <div class="home-img">
+    <a href="mapa.php">
+        <img src="images/images2/bernabeu.png" alt="">
+    </a>
+</div>
+
+
     </section>
 
-    <section class="content">
-        <h2>Bienvenido a Mundo Deportivo</h2>
-        <p>En nuestra página, encontrarás las últimas noticias, eventos y actualizaciones del mundo del deporte. Ya seas aficionado al fútbol, baloncesto, atletismo, o cualquier otro deporte, aquí tienes todo lo que necesitas para estar al tanto de tus deportes favoritos.</p>
+    <section class="education" id="education">
+        <h2 class="heading"> Info</h2>
+
+        <div class="timeline-items">
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-data">2024
+                </div>
+                <div class="timeline-content">
+                    <h3>Valle</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas saepe illo ea sequi corporis,
+                        cumque ipsum accusamus rem tempore impedit necessitatibus adipisci! Id et, mollitia nihil illum
+                        commodi natus aut.</p>
+                </div>
+
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-data">2024</div>
+                <div class="timeline-content">
+                    <h3>camino del diablo</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas saepe illo ea sequi corporis,
+                        cumque ipsum accusamus rem tempore impedit necessitatibus adipisci! Id et, mollitia nihil illum
+                        commodi natus aut.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-data">2024</div>
+                <div class="timeline-content">
+                    <h3>12 de septiembre</h>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas saepe illo ea sequi
+                            corporis,
+                            cumque ipsum accusamus rem tempore impedit necessitatibus adipisci! Id et, mollitia nihil
+                            illum
+                            commodi natus aut.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-data">2024</div>
+                <div class="timeline-content">
+                    <h3>Otros</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas saepe illo ea sequi corporis,
+                        cumque ipsum accusamus rem tempore impedit necessitatibus adipisci! Id et, mollitia nihil illum
+                        commodi natus aut.</p>
+                </div>
+            </div>
+
+
+        </div>
     </section>
 
-    <footer>
-        <p>&copy; 2024 Mundo Deportivo. Todos los derechos reservados.</p>
+    <section class="services" id="services">
+        <h2 class="heading">Services</h2>
+
+        <div class="services-container">
+            <div class="service-box">
+                <div class="service-info">
+                    <h4>Arreindo</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure quod qui nisi aut dolorem
+                        voluptates totam aliquid blanditiis consectetur veniam aliquam, maiores in architecto, maxime
+                        laudantium? Inventore consequatur sapiente aspernatur?</p>
+                </div>
+            </div>
+
+            <div class="service-box">
+                <div class="service-info">
+                    <h4>Ventas</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure quod qui nisi aut dolorem
+                        voluptates totam aliquid blanditiis consectetur veniam aliquam, maiores in architecto, maxime
+                        laudantium? Inventore consequatur sapiente aspernatur?</p>
+                </div>
+            </div>
+
+            <div class="service-box">
+                <div class="service-info">
+                    <h4>estacionamiento</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure quod qui nisi aut dolorem
+                        voluptates totam aliquid blanditiis consectetur veniam aliquam, maiores in architecto, maxime
+                        laudantium? Inventore consequatur sapiente aspernatur?</p>
+                </div>
+            </div>
+
+            <div class="service-box">
+                <div class="service-info">
+                    <h4>arriendo de balon</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure quod qui nisi aut dolorem
+                        voluptates totam aliquid blanditiis consectetur veniam aliquam, maiores in architecto, maxime
+                        laudantium? Inventore consequatur sapiente aspernatur?</p>
+                </div>
+            </div>
+
+            <div class="service-box">
+                <div class="service-info">
+                    <h4>Forma de pago</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure quod qui nisi aut dolorem
+                        voluptates totam aliquid blanditiis consectetur veniam aliquam, maiores in architecto, maxime
+                        laudantium? Inventore consequatur sapiente aspernatur?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <sectiion class="testimonials" id="testimonials">
+        <div class="testimonials-box">
+            <h2 class="heading">testimonials</h2>
+
+            <div class="wrapper">
+                <div class="testimonial-item">
+                    <img src="images/images2/kevin.jpg" alt="">
+                    <h2>Kevin</h2>
+                    <div class="rating">
+                        <i class='bx bxs-star' id="star"></i>
+                        <i class='bx bxs-star' id="star"></i>
+                        <i class='bx bxs-star' id="star"></i>
+                        <i class='bx bxs-star' id="star"></i>
+                        <i class='bx bxs-star' id="star"></i>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates itaque aut velit sequi,
+                        architecto accusamus sunt labore et laborum a ullam accusantium. Facilis, corrupti? Tempore
+                        asperiores omnis quaerat quis officia!</p>
+
+                </div>
+
+                <div class="testimonial-item">
+                    <img src="images/images2/cabezon.png" alt="">
+                    <h2>Sebastian</h2>
+                    <div class="rating">
+                        <i class='bx bxs-star' id="star"></i>
+                        <i class='bx bxs-star' id="star"></i>
+                        <i class='bx bxs-star' id="star"></i>
+                        <i class='bx bxs-star' id="star"></i>
+                        <i class='bx bxs-star' id="star"></i>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates itaque aut velit sequi,
+                        architecto accusamus sunt labore et laborum a ullam accusantium. Facilis, corrupti? Tempore
+                        asperiores omnis quaerat quis officia!</p>
+
+                </div>
+
+                <div class="testimonial-item">
+                    <img src="images/images2/palacios.jpg" alt="">
+                    <h2>Palacios</h2>
+                    <div class="rating">
+                        <i class='bx bxs-star' id="star"></i>
+                        <i class='bx bxs-star' id="star"></i>
+                        <i class='bx bxs-star' id="star"></i>
+                        <i class='bx bxs-star' id="star"></i>
+                        <i class='bx bxs-star' id="star"></i>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates itaque aut velit sequi,
+                        architecto accusamus sunt labore et laborum a ullam accusantium. Facilis, corrupti? Tempore
+                        asperiores omnis quaerat quis officia!</p>
+                </div>
+            </div>
+        </div>
+    </sectiion>
+
+    <section class="contact" id="contact">
+        <h2 class="heading">contact <span>Me</span>
+        </h2> 
+
+        <form action="">
+            <div class="input-group">
+                <div class="input-box">
+                    <input type ="text"
+                    placeholder="Full Name">
+                    <input type="email"
+                    placeholder="Email">
+                </div>
+                <div class="input-box">
+                    <input type="number"
+                    placeholder="Phone Number">
+                    <input type="text"
+                    placeholder="Subject">
+                </div>
+            </div>
+
+            <div class="input-group-2">
+                <textarea name="" id="" cols="30" rows="10" 
+                placeholder="Your Message"></textarea>
+                <input type="submit" value="Send Messenge" class="btn">
+            </div>
+        </form>    
+    </section>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="#"><i class='bx bx-link'></i></a>
+            <a href="#"><i class='bx bxs-store'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+            <a href="#"><i class='bx bxs-car-garage'></i></a>
+        </div>
+
+        <ul class="list">
+            <li>
+                <a href="#">FAQ</a>
+            </li>
+
+            <li>
+                <a href="#">Servicios</a>
+            </li>
+
+            <li>
+                <a href="#">About SportMaps</a>
+            </li>
+
+            <li>
+                <a href="#">Contact</a>
+            </li>
+
+            <li>
+                <a href="#">Testimonials</a>
+            </li>
+        </ul>
+        <p class="copyright">
+            @ SportMaps | All Rights
+        </p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
+
 </html>
-
-
-
-
-
-

@@ -1,17 +1,17 @@
 <?php 
 
+// Asegúrate de incluir correctamente el archivo de conexión
 include("conexion.php");
 
 if (isset($_POST['register'])) {
 
-    // Verifica que las claves existan en el array $_POST antes de usarlas
+    // Verificar que los datos han sido recibidos correctamente desde el formulario
     if (
-        isset($_POST['Nombre'], $_POST['Email'], $_POST['Direccion'], $_POST['Telefono'], $_POST['Contrasena']) &&
-        strlen($_POST['Nombre']) >= 1 &&
-        strlen($_POST['Email']) >= 1 &&
-        strlen($_POST['Direccion']) >= 1 &&
-        strlen($_POST['Telefono']) >= 1 &&
-        strlen($_POST['Contrasena']) >= 1 
+        isset($_POST['Nombre']) && strlen($_POST['Nombre']) >= 1 &&
+        isset($_POST['Email']) && strlen($_POST['Email']) >= 1 &&
+        isset($_POST['Direccion']) && strlen($_POST['Direccion']) >= 1 &&
+        isset($_POST['Telefono']) && strlen($_POST['Telefono']) >= 1 &&
+        isset($_POST['Contrasena']) && strlen($_POST['Contrasena']) >= 1 
     ) {
         $name = trim($_POST['Nombre']);
         $email = trim($_POST['Email']);

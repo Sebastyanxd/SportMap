@@ -14,7 +14,7 @@ if (!empty($_POST["login"])) {
         $password = trim($_POST["password"]);
 
         // Consulta para obtener los datos del usuario por email
-        $stmt = $conexion->prepare("SELECT * FROM sportmap WHERE email = ?");
+        $stmt = $conexion->prepare("SELECT * FROM usuarios WHERE Email = ?"); // Cambié 'sportmap' por 'usuarios'
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -24,7 +24,7 @@ if (!empty($_POST["login"])) {
             $datos = $result->fetch_object();
 
             // Verificar la contraseña hasheada
-            if (password_verify($password, $datos->contrasena)) {
+            if (password_verify($password, $datos->Contrasena)) { // Asegúrate que el nombre de la columna coincida
                 $_SESSION['email'] = $email; // Guardar el email en la sesión
                 header("Location: index.php");
                 exit();
@@ -39,4 +39,3 @@ if (!empty($_POST["login"])) {
     }
 }
 ?>
-
