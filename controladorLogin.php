@@ -9,7 +9,7 @@ if (!empty($_POST["login"])) {
         $password = trim($_POST["password"]);
 
         // Consulta para obtener los datos del usuario por email
-        $stmt = $conexion->prepare("SELECT * FROM usuarios WHERE email = ?");
+        $stmt = $conexion->prepare("SELECT * FROM datos WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();

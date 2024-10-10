@@ -15,27 +15,27 @@
 
 
     <div class="input-wrapper">
-        <input type="text" name="Nombre" placeholder="Nombre">
+        <input type="text" name="name" placeholder="Nombre">
         <img class="input-icon" src="images/name.svg" alt="">
     </div>
 
     <div class="input-wrapper">
-        <input type="email" name="Email" placeholder="Email">
+        <input type="email" name="email" placeholder="Email">
         <img class="input-icon" src="images/email.svg" alt="">
     </div>
 
     <div class="input-wrapper">
-        <input type="text" name="Direccion" placeholder="Direccion">
+        <input type="text" name="direction" placeholder="Direccion">
         <img class="input-icon" src="images/direction.svg" alt="">
     </div>
 
     <div class="input-wrapper">
-        <input type="tel" name="Telefono" placeholder="Telefono">
+        <input type="tel" name="phone" placeholder="telefono">
         <img class="input-icon" src="images/phone.svg" alt="">
     </div>
 
     <div class="input-wrapper">
-        <input type="password" name="Contrasena" placeholder="Contrasena">
+        <input type="password" name="password" placeholder="Contrasena">
         <img class="input-icon" src="images/password.svg" alt="">
     </div>
 

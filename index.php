@@ -105,23 +105,6 @@ if (!isset($_SESSION['email'])) {
             <a href="contacto.php">Contacto</a>
             <a href="logout.php">Cerrar sesión</a>
 
-<<<<<<< Updated upstream
-=======
-    <header class="header">
-        <a href="#home" class="logo"> Sport
-            <span>Maps</span></a>
-
-        <i class='bx bx-menu' id="menu-icon"></i>
-
-        <nav class="navbar">
-            <a href="#home" class="active">Home</a>
-            <a href="#canchas">Canchas</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#mapa">Mapa</a>
-            <a href="#contac">Contacto</a>
-            <a href="agendar.php">Agendar</a>
-            <a href="logout.php">Cerrar Sesion</a>
->>>>>>> Stashed changes
         </nav>
     </header>
 
