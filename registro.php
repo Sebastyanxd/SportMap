@@ -10,7 +10,11 @@
 
     <form method="post" >
 
+<<<<<<< HEAD
     <h2>Regístrate</h2>
+=======
+    <h2>Registrate</h2>
+>>>>>>> cb92de49df88d15104747bdb27b2c752c67092a0
     <p>Inicia tu registro</p>
 
     <div class="input-wrapper">
