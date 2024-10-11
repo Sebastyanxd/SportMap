@@ -6,6 +6,7 @@ if (isset($_SESSION['email'])) {
     header("Location: index.php"); // Redirigir a index.php si ya está autenticado
     exit();
 }
+
 ?>
 
 <!DOCTYPE html>

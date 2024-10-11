@@ -1,8 +1,9 @@
 <?php
 session_start(); // Iniciar sesión
+print_r($_SESSION);
 
 // Verificar si la sesión está activa
-if (!isset($_SESSION['email'])) {
+if (!isset($_SESSION['usuarioID'])) {
     header("Location: login.php"); // Redirigir a login.php si no está autenticado
     exit();
 }
@@ -29,11 +30,13 @@ if (!isset($_SESSION['email'])) {
         <i class='bx bx-menu' id="menu-icon"></i>
 
         <nav class="navbar">
-            <a href="#home" class="active">Home</a>
-            <a href="#services">Servicios</a>
+            <a href="index.php" class="active">Home</a>
+            <a href="#servicios">Servicios</a>
             <a href="mapa.php">Mapa</a>
             <a href="#contact">Contacto</a>
+            <a href="agendar.php">Agendar</a>
             <a href="logout.php">Cerrar sesion</a>
+            
         </nav>
     </header>
 

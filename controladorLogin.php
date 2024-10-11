@@ -25,7 +25,8 @@ if (!empty($_POST["login"])) {
 
             // Verificar la contraseña hasheada
             if (password_verify($password, $datos->Contrasena)) { // Asegúrate que el nombre de la columna coincida
-                $_SESSION['email'] = $email; // Guardar el email en la sesión
+                $_SESSION['usuarioID'] = $datos->UserID; // Almacenar el ID del usuario
+                echo "Usuario ID guardado en sesión: " . $_SESSION['usuarioID']; // Depuración
                 header("Location: index.php");
                 exit();
             } else {
@@ -39,4 +40,8 @@ if (!empty($_POST["login"])) {
     }
 }
 ?>
+
+
+
+
 
