@@ -31,8 +31,7 @@ if (!isset($_SESSION['usuarioID'])) {
 
         <nav class="navbar">
             <a href="index.php" class="active">Home</a>
-            <a href="#servicios">Servicios</a>
-            <a href="mapa.php">Mapa</a>
+            <a href="#services">Servicios</a>
             <a href="#contact">Contacto</a>
             <a href="agendar.php">Agendar</a>
             <a href="logout.php">Cerrar sesion</a>
@@ -62,7 +61,7 @@ if (!isset($_SESSION['usuarioID'])) {
             </div>
         </div>
         <div class="home-img">
-    <a href="mapa.php">
+    <a href="agendar.php">
         <img src="images/images2/bernabeu.png" alt="">
     </a>
 </div>
@@ -234,32 +233,27 @@ if (!isset($_SESSION['usuarioID'])) {
     </sectiion>
 
     <section class="contact" id="contact">
-        <h2 class="heading">contact <span>Me</span>
-        </h2> 
+    <h2 class="heading">contact <span>Me</span></h2>
 
-        <form action="">
-            <div class="input-group">
-                <div class="input-box">
-                    <input type ="text"
-                    placeholder="Full Name">
-                    <input type="email"
-                    placeholder="Email">
-                </div>
-                <div class="input-box">
-                    <input type="number"
-                    placeholder="Phone Number">
-                    <input type="text"
-                    placeholder="Subject">
-                </div>
+    <form action="guardar_contacto.php" method="POST">
+        <div class="input-group">
+            <div class="input-box">
+                <input type="text" name="nombre" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email" required>
             </div>
+            <div class="input-box">
+                <input type="number" name="telefono" placeholder="Phone Number" required>
+                <input type="text" name="asunto" placeholder="Subject" required>
+            </div>
+        </div>
 
-            <div class="input-group-2">
-                <textarea name="" id="" cols="30" rows="10" 
-                placeholder="Your Message"></textarea>
-                <input type="submit" value="Send Messenge" class="btn">
-            </div>
-        </form>    
-    </section>
+        <div class="input-group-2">
+            <textarea name="mensaje" cols="30" rows="10" placeholder="Your Message" required></textarea>
+            <input type="submit" value="Send Message" class="btn">
+        </div>
+    </form>
+</section>
+
 
     <footer class="footer">
         <div class="social">

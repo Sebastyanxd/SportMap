@@ -166,9 +166,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <nav class="navbar">
             <a href="index.php" class="active">Home</a>
-            <a href="#servicios">Servicios</a>
-            <a href="mapa.php">Mapa</a>
-            <a href="#contac">Contacto</a>
+            <a href="index.php">Servicios</a>
+            <a href="index.php">Contacto</a>
             <a href="agendar.php">Agendar</a>
             <a href="logout.php">Cerrar sesion</a>
             
@@ -177,6 +176,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <section class="agendar" id="agendar">
     <h2 class="titulo">Agendar <span>Cancha</span></h2> 
+
+
+    <div style="display: flex;">
+    <!-- Mapa -->
+    <div style="margin-right: 20px;">
+        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1E4F6XPg1q4FUiPmHeiCKJBQ0Spoir8A&ehbc=2E312F" width="640" height="650" style="border: none;"></iframe>
+    </div>
 
     <form method="post" action="reservar.php">
         <div class="input-group">
