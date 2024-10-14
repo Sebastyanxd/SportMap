@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-10-2024 a las 02:01:20
+-- Tiempo de generación: 14-10-2024 a las 22:31:12
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -66,6 +66,30 @@ INSERT INTO `centrosdeportivos` (`CentroID`, `Nombre`, `Ubicacion`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `contactos`
+--
+
+CREATE TABLE `contactos` (
+  `contactoID` int(11) NOT NULL,
+  `userID` int(11) DEFAULT NULL,
+  `nombre_completo` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `telefono` varchar(20) DEFAULT NULL,
+  `asunto` varchar(255) DEFAULT NULL,
+  `mensaje` text DEFAULT NULL,
+  `fecha_contacto` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `contactos`
+--
+
+INSERT INTO `contactos` (`contactoID`, `userID`, `nombre_completo`, `email`, `telefono`, `asunto`, `mensaje`, `fecha_contacto`) VALUES
+(1, 1, 'sebastian', 'sebas.200294@gmail.com', '930398712', 'pagina qla', 'caca', '2024-10-14 20:25:52');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `horarios`
 --
 
@@ -108,7 +132,10 @@ CREATE TABLE `reservas` (
 
 INSERT INTO `reservas` (`ReservaID`, `UsuarioID`, `CanchaID`, `HorarioID`, `FechaReserva`) VALUES
 (19, 1, 3, 7, '2024-10-18'),
-(22, 2, 3, 8, '2024-10-25');
+(22, 2, 3, 8, '2024-10-25'),
+(23, 3, 2, 5, '2024-10-24'),
+(24, 1, 2, 6, '2024-10-25'),
+(25, 1, 2, 5, '2024-10-18');
 
 -- --------------------------------------------------------
 
@@ -132,7 +159,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`UserID`, `Nombre`, `Email`, `Direccion`, `Telefono`, `Contrasena`, `FechaRegistro`) VALUES
 (1, 'sebastian', 'sebas.200294@gmail.com', 'test', 123123, '$2y$10$u5zqfdpTkigK.kwt/KH0QeBhjoTG9J/WIhHLBwvNlpsQ9QCMLco46', '2024-10-10'),
-(2, 'kevin', 'KEVINQLO@GMAIL.COM', 'test', 123123, '$2y$10$O/JCjF8HBf4KAzvnfnsLWeKJgSN2TFw9L.jVbWCr39Gb/TL0tFZWy', '2024-10-10');
+(2, 'kevin', 'KEVINQLO@GMAIL.COM', 'test', 123123, '$2y$10$O/JCjF8HBf4KAzvnfnsLWeKJgSN2TFw9L.jVbWCr39Gb/TL0tFZWy', '2024-10-10'),
+(3, 'cristiam', 'cristian@gmail.com', 'viena 1010', 83049839, '$2y$10$GC.usE9NUqWOGlb6x2iMEev2KgHTmWzmhR9bak7LE6jVWvEXpaqDG', '2024-10-11');
 
 --
 -- Índices para tablas volcadas
@@ -150,6 +178,13 @@ ALTER TABLE `canchas`
 --
 ALTER TABLE `centrosdeportivos`
   ADD PRIMARY KEY (`CentroID`);
+
+--
+-- Indices de la tabla `contactos`
+--
+ALTER TABLE `contactos`
+  ADD PRIMARY KEY (`contactoID`),
+  ADD KEY `userID` (`userID`);
 
 --
 -- Indices de la tabla `horarios`
@@ -190,6 +225,12 @@ ALTER TABLE `centrosdeportivos`
   MODIFY `CentroID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `contactos`
+--
+ALTER TABLE `contactos`
+  MODIFY `contactoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `horarios`
 --
 ALTER TABLE `horarios`
@@ -199,13 +240,13 @@ ALTER TABLE `horarios`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `ReservaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ReservaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
@@ -216,6 +257,12 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `canchas`
   ADD CONSTRAINT `canchas_ibfk_1` FOREIGN KEY (`CentroID`) REFERENCES `centrosdeportivos` (`CentroID`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `contactos`
+--
+ALTER TABLE `contactos`
+  ADD CONSTRAINT `contactos_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `usuarios` (`UserID`);
 
 --
 -- Filtros para la tabla `horarios`
