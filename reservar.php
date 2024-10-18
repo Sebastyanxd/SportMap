@@ -18,6 +18,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $horarioID = $_POST['horarioID'];
     $comuna = $_POST['comuna']; // Obteniendo la comuna seleccionada
     $centroID = $_POST['centroID']; // Obteniendo el ID del centro deportivo
+    $fechaReserva = $_POST['fechaReserva']; // Obtener la fecha de reserva desde el formulario
+
+    // Verificar el número de reservas del usuario
+    $sql_verificar_limite = "SELECT COUNT(*) as total FROM Reservas WHERE UsuarioID = ?";
+    $stmt_verificar_limite = $conexion->prepare($sql_verificar_limite);
+    $stmt_verificar_limite->bind_param("i", $usuarioID);
+    $stmt_verificar_limite->execute();
+    $resultado_verificar_limite = $stmt_verificar_limite->get_result();
+    $fila_limite = $resultado_verificar_limite->fetch_assoc();
+
+    if ($fila_limite['total'] >= 3) {
+        echo "
+            <script>
+                alert('Ya has alcanzado el límite de 3 reservas. No puedes hacer más reservas en este momento.');
+                window.history.back();
+            </script>
+        ";
+        exit();
+    }
 
     // Obtener el nombre del centro deportivo usando su ID
     $sql_centro = "SELECT Nombre FROM CentrosDeportivos WHERE CentroID = ?";
@@ -100,16 +119,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Verificar si ya existe una reserva para la misma cancha y horario
+    // Verificar si ya existe una reserva para la misma cancha y horario en la fecha seleccionada
     $sql_verificar = "
         SELECT COUNT(*) as total
         FROM Reservas
         WHERE CanchaID = ? 
-        AND HorarioID = ?
+        AND HorarioID = ? 
+        AND FechaReserva = ?
     ";
 
     $stmt_verificar = $conexion->prepare($sql_verificar);
-    $stmt_verificar->bind_param("ii", $canchaID, $horarioID);
+    $stmt_verificar->bind_param("iis", $canchaID, $horarioID, $fechaReserva);
     $stmt_verificar->execute();
     $resultado_verificar = $stmt_verificar->get_result();
     $fila = $resultado_verificar->fetch_assoc();
@@ -118,40 +138,75 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Ya existe una reserva para la misma cancha y horario
         echo "
             <script>
-                alert('Ya existe una reserva para esta cancha en ese horario. Por favor, elija otro horario disponible.');
+                alert('Ya existe una reserva para esta cancha en ese horario y fecha. Por favor, elija otro horario disponible.');
                 window.history.back();
             </script>
         ";
     } else {
         // Inserta la reserva
-$sql_reserva = "
-INSERT INTO Reservas 
-(UsuarioID, CanchaID, NombreCentro, Comuna, HorarioID, FechaReserva, HoraReserva, HoraInicioReserva, HoraFinReserva, NombreCancha, NombreUsuario) 
-VALUES (?, ?, ?, ?, ?, CURDATE(), CURTIME(), ?, ?, ?, ?)
-";
-$stmt = $conexion->prepare($sql_reserva);
+        $sql_reserva = "
+        INSERT INTO Reservas 
+        (UsuarioID, CanchaID, NombreCentro, Comuna, HorarioID, FechaReserva, HoraReserva, HoraInicioReserva, HoraFinReserva, NombreCancha, NombreUsuario) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ";
+        
 
-// Verifica que el prepared statement se creó correctamente
-if ($stmt === false) {
-die("Error en la preparación de la consulta: " . $conexion->error);
-}
+        $stmt = $conexion->prepare($sql_reserva);
 
-$stmt->bind_param("iississss", $usuarioID, $canchaID, $nombreCentro, $comuna, $horarioID, $horaInicioReserva, $horaFinReserva, $nombreCancha, $nombreUsuario);
+        // Verifica que el prepared statement se creó correctamente
+        if ($stmt === false) {
+            die("Error en la preparación de la consulta: " . $conexion->error);
+        }
 
-try {
-$stmt->execute();
-echo "
-    <script>
-        alert('Reserva realizada con éxito.');
-        window.location.href = 'index.php'; // Redirige a la página de reservas del usuario
-    </script>
-";
-} catch (mysqli_sql_exception $e) {
-echo "Error en la reserva: " . $e->getMessage(); // Muestra el error específico
-}
+        // Asignar la hora actual
+        $horaReserva = date("H:i:s"); // Hora actual
 
+        // Bind de parámetros
+        $stmt->bind_param("iississssss", 
+            $usuarioID, 
+            $canchaID, 
+            $nombreCentro, 
+            $comuna, 
+            $horarioID, 
+            $fechaReserva, 
+            $horaReserva, 
+            $horaInicioReserva, 
+            $horaFinReserva, 
+            $nombreCancha, 
+            $nombreUsuario
+        );
+
+        try {
+            $stmt->execute();
+            echo "
+                <script>
+                    alert('Reserva realizada con éxito.');
+                    window.location.href = 'index.php'; // Redirige a la página de reservas del usuario
+                </script>
+            ";
+        } catch (mysqli_sql_exception $e) {
+            echo "Error en la reserva: " . $e->getMessage(); // Muestra el error específico
+        }
     }
 }
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
