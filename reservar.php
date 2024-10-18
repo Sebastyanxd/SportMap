@@ -59,15 +59,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Validar que el usuarioID es un número
-    if (!is_numeric($usuarioID)) {
-        die("Error: El UsuarioID debe ser un número.");
+    // Obtener el nombre del usuario usando su ID
+    $sql_usuario = "SELECT Nombre FROM Usuarios WHERE UserID = ?";
+    $stmt_usuario = $conexion->prepare($sql_usuario);
+    $stmt_usuario->bind_param("i", $usuarioID);
+    $stmt_usuario->execute();
+    $resultado_usuario = $stmt_usuario->get_result();
+
+    if ($resultado_usuario->num_rows > 0) {
+        $fila_usuario = $resultado_usuario->fetch_assoc();
+        $nombreUsuario = $fila_usuario['Nombre']; // Guardando el nombre del usuario
+    } else {
+        echo "
+            <script>
+                alert('Usuario no encontrado.');
+                window.history.back();
+            </script>
+        ";
+        exit();
     }
 
     // Obtener la hora de inicio y fin usando el HorarioID y CanchaID
     $sql_horario = "SELECT HoraInicio, HoraFin FROM Horarios WHERE HorarioID = ? AND CanchaID = ?";
     $stmt_horario = $conexion->prepare($sql_horario);
-    $stmt_horario->bind_param("ii", $horarioID, $canchaID); // Cambia a "ii" ya que ambos son enteros
+    $stmt_horario->bind_param("ii", $horarioID, $canchaID);
     $stmt_horario->execute();
     $resultado_horario = $stmt_horario->get_result();
 
@@ -104,35 +119,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "
             <script>
                 alert('Ya existe una reserva para esta cancha en ese horario. Por favor, elija otro horario disponible.');
-                window.history.back(); // Redirige al usuario de nuevo al formulario de reserva
+                window.history.back();
             </script>
         ";
     } else {
-        // Si no existe, procede a insertar la nueva reserva
-        $sql_reserva = "INSERT INTO Reservas (UsuarioID, CanchaID, NombreCentro, Comuna, HorarioID, NombreCancha, FechaReserva, HoraReserva, HoraInicioReserva, HoraFinReserva) VALUES (?, ?, ?, ?, ?, ?, NOW(), NOW(), ?, ?)";
-        $stmt = $conexion->prepare($sql_reserva);
+        // Inserta la reserva
+$sql_reserva = "
+INSERT INTO Reservas 
+(UsuarioID, CanchaID, NombreCentro, Comuna, HorarioID, FechaReserva, HoraReserva, HoraInicioReserva, HoraFinReserva, NombreCancha, NombreUsuario) 
+VALUES (?, ?, ?, ?, ?, CURDATE(), CURTIME(), ?, ?, ?, ?)
+";
+$stmt = $conexion->prepare($sql_reserva);
 
-        $stmt->bind_param("iissssss", $usuarioID, $canchaID, $nombreCentro, $comuna, $horarioID, $nombreCancha, $horaInicioReserva, $horaFinReserva);
+// Verifica que el prepared statement se creó correctamente
+if ($stmt === false) {
+die("Error en la preparación de la consulta: " . $conexion->error);
+}
 
-        
-        // Asignar valores a las variables necesarias
-        $fechaReserva = date('Y-m-d'); // Establece la fecha de reserva como la fecha actual
+$stmt->bind_param("iississss", $usuarioID, $canchaID, $nombreCentro, $comuna, $horarioID, $horaInicioReserva, $horaFinReserva, $nombreCancha, $nombreUsuario);
 
-        
-        try {
-            $stmt->execute();
-            echo "
-                <script>
-                    alert('Reserva realizada con éxito.');
-                    window.location.href = 'index.php'; // Redirige a la página de reservas del usuario
-                </script>
-            ";
-        } catch (mysqli_sql_exception $e) {
-            echo "Error en la reserva: " . $e->getMessage(); // Muestra el error específico
-        }
+try {
+$stmt->execute();
+echo "
+    <script>
+        alert('Reserva realizada con éxito.');
+        window.location.href = 'index.php'; // Redirige a la página de reservas del usuario
+    </script>
+";
+} catch (mysqli_sql_exception $e) {
+echo "Error en la reserva: " . $e->getMessage(); // Muestra el error específico
+}
+
     }
 }
-?>
+
+
+
 
 
 
