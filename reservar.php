@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Obtener el nombre de la cancha usando su ID
-    $sql_cancha = "SELECT Nombre FROM Canchas WHERE CanchaID = ?";
+    $sql_cancha = "SELECT Numero FROM Canchas WHERE CanchaID = ?";
     $stmt_cancha = $conexion->prepare($sql_cancha);
     $stmt_cancha->bind_param("i", $canchaID);
     $stmt_cancha->execute();
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($resultado_cancha->num_rows > 0) {
         $fila_cancha = $resultado_cancha->fetch_assoc();
-        $nombreCancha = $fila_cancha['Nombre']; // Guardando el nombre de la cancha
+        $nombreCancha = $fila_cancha['Numero']; // Guardando el nombre de la cancha
     } else {
         echo "
             <script>
@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Obtener el nombre del usuario usando su ID
-    $sql_usuario = "SELECT Nombre FROM Usuarios WHERE UserID = ?";
+    $sql_usuario = "SELECT Nombre FROM Usuario WHERE UserID = ?";
     $stmt_usuario = $conexion->prepare($sql_usuario);
     $stmt_usuario->bind_param("i", $usuarioID);
     $stmt_usuario->execute();
@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Obtener la hora de inicio y fin usando el HorarioID y CanchaID
-    $sql_horario = "SELECT HoraInicio, HoraFin FROM Horarios WHERE HorarioID = ? AND CanchaID = ?";
+    $sql_horario = "SELECT HoraInicio, HoraFin FROM Horario WHERE HorarioID = ? AND CanchaID = ?";
     $stmt_horario = $conexion->prepare($sql_horario);
     $stmt_horario->bind_param("ii", $horarioID, $canchaID);
     $stmt_horario->execute();
@@ -143,84 +143,74 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </script>
         ";
     } else {
-        // Inserta la reserva
+        // Obtener el precio por hora de la cancha seleccionada
+        $sql_precio = "SELECT PrecioPorHora FROM Canchas WHERE CanchaID = ?";
+        $stmt_precio = $conexion->prepare($sql_precio);
+        $stmt_precio->bind_param("i", $canchaID);
+        $stmt_precio->execute();
+        $stmt_precio->bind_result($precioPorHora);
+        $stmt_precio->fetch();
+        $stmt_precio->close();
+
+        // Calcular la duración de la reserva en horas
+        $horaInicio = new DateTime($horaInicioReserva);
+        $horaFin = new DateTime($horaFinReserva);
+        $intervalo = $horaInicio->diff($horaFin);
+        $duracionHoras = $intervalo->h + ($intervalo->i / 60); // Conversión de minutos a horas
+
+        // Calcular el monto total
+        $montoTotal = number_format($duracionHoras * $precioPorHora, 2, '.', ''); // Formatear a dos decimales
+
+        // Generar un código de reserva único
+        $codigoReserva = uniqid('RES-'); // Ejemplo de código único
+
+        // Estado de la reserva (por defecto: 'pendiente')
+        $estadoReserva = 'pendiente';
+
+        // Verifica que el método de pago esté definido
+        $metodoPago = isset($_POST['metodoPago']) ? $_POST['metodoPago'] : ''; 
+
+        // Inserta la reserva con los campos correctos
         $sql_reserva = "
-        INSERT INTO Reservas 
-        (UsuarioID, CanchaID, NombreCentro, Comuna, HorarioID, FechaReserva, HoraReserva, HoraInicioReserva, HoraFinReserva, NombreCancha, NombreUsuario) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO Reservas (CodigoReserva, UsuarioID, CanchaID, HorarioID, FechaReserva, HoraInicioReserva, HoraFinReserva, EstadoReserva, MontoTotal, MetodoPago) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ";
-        
 
         $stmt = $conexion->prepare($sql_reserva);
 
-        // Verifica que el prepared statement se creó correctamente
+        // Asegúrate de que el prepared statement se creó correctamente
         if ($stmt === false) {
             die("Error en la preparación de la consulta: " . $conexion->error);
         }
 
-        // Asignar la hora actual
-        $horaReserva = date("H:i:s"); // Hora actual
+        // Asegúrate de que todas las variables tengan valores válidos
+        if (empty($codigoReserva) || !isset($usuarioID) || !isset($canchaID) || !isset($horarioID) || !isset($fechaReserva) || !isset($horaInicioReserva) || !isset($horaFinReserva) || empty($estadoReserva) || empty($montoTotal) || empty($metodoPago)) {
+            die("Error: algunos datos son inválidos.");
+        }
 
-        // Bind de parámetros
-        $stmt->bind_param("iississssss", 
-            $usuarioID, 
-            $canchaID, 
-            $nombreCentro, 
-            $comuna, 
-            $horarioID, 
-            $fechaReserva, 
-            $horaReserva, 
-            $horaInicioReserva, 
-            $horaFinReserva, 
-            $nombreCancha, 
-            $nombreUsuario
-        );
+        // Cambiar el tipo de dato de 'i' para canchaID y asegurarte que todos los tipos son correctos
+        $stmt->bind_param("siisssssss", $codigoReserva, $usuarioID, $canchaID, $horarioID, $fechaReserva, $horaInicioReserva, $horaFinReserva, $estadoReserva, $montoTotal, $metodoPago);
 
-        try {
-            $stmt->execute();
+        // Ejecuta la consulta
+        if ($stmt->execute()) {
             echo "
                 <script>
                     alert('Reserva realizada con éxito.');
-                    window.location.href = 'index.php'; // Redirige a la página de reservas del usuario
+                    window.location.href = 'index.php'; // Redirigir a la página principal o a donde quieras
                 </script>
             ";
-        } catch (mysqli_sql_exception $e) {
-            echo "Error en la reserva: " . $e->getMessage(); // Muestra el error específico
+        } else {
+            echo "
+                <script>
+                    alert('Error al realizar la reserva: " . $stmt->error . "');
+                    window.history.back();
+                </script>
+            ";
         }
+
+        $stmt->close();
     }
 }
+$conexion->close();
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -17,18 +17,26 @@ $sql_centros = "SELECT CentroID, Nombre FROM centrosdeportivos";
 $result_centros = $conexion->query($sql_centros);
 
 // Obtener canchas
-$sql_canchas = "SELECT CanchaID, Nombre FROM Canchas";
+$sql_canchas = "SELECT CanchaID, Numero FROM Canchas";
 $result_canchas = $conexion->query($sql_canchas);
 
 // Verificar si se ha enviado el formulario de reserva
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuarioID = $_POST['usuarioID'];
+    $usuarioID = $_SESSION['usuarioID']; // Usuario autenticado
     $canchaID = $_POST['canchaID'];
     $horarioID = $_POST['horarioID'];
     $fechaReserva = $_POST['fechaReserva'];
+    $horaInicioReserva = $_POST['horaInicioReserva'];
+    $horaFinReserva = $_POST['horaFinReserva'];
+    $montoTotal = $_POST['montoTotal'];
+    $metodoPago = $_POST['metodoPago'];
+    $numeroPersonas = $_POST['numeroPersonas'];
+    $notasEspeciales = $_POST['notasEspeciales'];
+    $estadoReserva = 'pendiente'; // Inicialmente la reserva estará en estado pendiente
 
     // Insertar la reserva en la base de datos
-    $sql_reserva = "INSERT INTO Reservas (UsuarioID, CanchaID, HorarioID, FechaReserva) VALUES ('$usuarioID', '$canchaID', '$horarioID', '$fechaReserva')";
+    $sql_reserva = "INSERT INTO Reservas (UsuarioID, CanchaID, HorarioID, FechaReserva, HoraInicioReserva, HoraFinReserva, MontoTotal, MetodoPago, NumeroPersonas, NotasEspeciales, EstadoReserva) 
+                    VALUES ('$usuarioID', '$canchaID', '$horarioID', '$fechaReserva', '$horaInicioReserva', '$horaFinReserva', '$montoTotal', '$metodoPago', '$numeroPersonas', '$notasEspeciales', '$estadoReserva')";
     
     if ($conexion->query($sql_reserva) === TRUE) {
         echo "¡Reserva realizada con éxito!";
@@ -37,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -105,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         font-size: 8rem;
         text-align: center;
         margin: 5rem 0;
-        margin-top: 80px;
+        margin-top: 400px;
     }
     </style>
     <script>
@@ -134,54 +143,67 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     function cargarCanchas() {
-        const centroID = document.getElementById('centroID').value;
-        const canchaSelect = document.getElementById('canchaID');
-        
-        // Limpiar canchas y horarios existentes
-        canchaSelect.innerHTML = "<option value=''>Seleccione una Cancha</option>";
-        document.getElementById('horarioID').innerHTML = "<option value=''>Seleccione un Horario</option>";
+    const centroID = document.getElementById('centroID').value;
+    const canchaSelect = document.getElementById('canchaID');
 
-        if (centroID) {
-            fetch(`obtener_canchas.php?centroID=${centroID}`)
-                .then(response => response.json())
-                .then(data => {
+    // Limpiar las opciones actuales
+    canchaSelect.innerHTML = "<option value=''>Seleccione una Cancha</option>";
+    document.getElementById('horarioID').innerHTML = "<option value=''>Seleccione un Horario</option>";
+
+    if (centroID) {
+        fetch(`obtener_canchas.php?centroID=${centroID}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.length > 0) {
                     data.forEach(cancha => {
                         const option = document.createElement('option');
                         option.value = cancha.CanchaID;
-                        option.textContent = cancha.Nombre;
+                        option.textContent = `${cancha.Numero} - ${cancha.TipoCancha}`;
                         canchaSelect.appendChild(option);
                     });
-                })
-                .catch(error => console.error('Error:', error));
-        }
+                } else {
+                    canchaSelect.innerHTML = "<option value=''>No hay canchas disponibles</option>";
+                }
+            })
+            .catch(error => console.error('Error al cargar canchas:', error));
     }
+}
 
-    function cargarHorarios() {
-        const canchaID = document.getElementById('canchaID').value;
-        const horarioSelect = document.getElementById('horarioID');
 
-        // Limpiar horarios existentes
-        horarioSelect.innerHTML = "<option value=''>Seleccione un Horario</option>";
 
-        if (canchaID) {
-            fetch(`obtener_horarios.php?canchaID=${canchaID}`)
-                .then(response => response.json())
-                .then(data => {
+function cargarHorarios() {
+    const canchaID = document.getElementById('canchaID').value;
+    const horarioSelect = document.getElementById('horarioID');
+
+    // Limpiar las opciones actuales
+    horarioSelect.innerHTML = "<option value=''>Seleccione un Horario</option>";
+
+    if (canchaID) {
+        fetch(`obtener_horarios.php?canchaID=${canchaID}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.length > 0) {
                     data.forEach(horario => {
                         const option = document.createElement('option');
                         option.value = horario.HorarioID;
-                        option.textContent = `${horario.HoraInicio} - ${horario.HoraFin}`;
+                        option.textContent = `${horario.Fecha} - ${horario.HoraInicio} a ${horario.HoraFin}`;
                         horarioSelect.appendChild(option);
                     });
-                })
-                .catch(error => console.error('Error:', error));
-        }
+                } else {
+                    horarioSelect.innerHTML = "<option value=''>No hay horarios disponibles</option>";
+                }
+            })
+            .catch(error => console.error('Error al cargar horarios:', error));
     }
+}
+
     </script>
     <link rel="stylesheet" href="style3.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+
+
 <header class="header">
     <a href="index.php" class="logo"> Sport<span>Maps</span></a>
     <i class='bx bx-menu' id="menu-icon"></i>
@@ -204,49 +226,75 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
 
         <form method="post" action="reservar.php">
-            <div class="input-group">
-                <div class="input-box">
-                    <label for="comuna">Comuna:</label>
-                    <select name="comuna" id="comuna" onchange="cargarCentros()" required>
-                        <option value="">Seleccione una Comuna</option>
-                        <?php
-                        if ($result_comunas->num_rows > 0) {
-                            while ($row = $result_comunas->fetch_assoc()) {
-                                echo "<option value='" . $row['Comuna'] . "'>" . $row['Comuna'] . "</option>";
-                            }
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div class="input-box">
-                    <label for="centroID">Centro Deportivo:</label>
-                    <select name="centroID" id="centroID" onchange="cargarCanchas()" required>
-                        <option value="">Seleccione un Centro</option>
-                    </select>
-                </div>
+    <div class="input-group">
+        <div class="input-box">
+            <label for="comuna">Comuna:</label>
+            <select name="comuna" id="comuna" onchange="cargarCentros()" required>
+                <option value="">Seleccione una Comuna</option>
+                <?php
+                if ($result_comunas->num_rows > 0) {
+                    while ($row = $result_comunas->fetch_assoc()) {
+                        echo "<option value='" . $row['Comuna'] . "'>" . $row['Comuna'] . "</option>";
+                    }
+                }
+                ?>
+            </select>
+        </div>
+        <div class="input-box">
+            <label for="centroID">Centro Deportivo:</label>
+            <select name="centroID" id="centroID" onchange="cargarCanchas()" required>
+                <option value="">Seleccione un Centro</option>
+            </select>
+        </div>
+    </div>
+    <div class="input-group">
+        <div class="input-box">
+            <label for="canchaID">Cancha:</label>
+            <select name="canchaID" id="canchaID" onchange="cargarHorarios(); mostrarPrecio();" required>
+                <option value="">Seleccione una Cancha</option>
+            </select>
+        </div>
+        <div class="input-box">
+            <label for="horarioID">Horario:</label>
+            <select name="horarioID" id="horarioID" required>
+                <option value="">Seleccione un Horario</option>
+                <!-- Aquí irán las opciones de horarios -->
+            </select>
+        </div>
+    </div>
+    <div class="input-group">
+        <div class="input-box">
+        <label for="fechaReserva">Fecha de Reserva:</label>
+        <input type="date" id="fechaReserva" name="fechaReserva" required>
+        </div>
+    </div>
+    <div class="input-group">
+        <div class="input-box">
+            <label for="precioPorHora">Precio por Hora:</label>
+            <span id="precioPorHora">0.00</span> <!-- Aquí se mostrará el precio por hora -->
+            
+        </div>
+        
+        <div class="input-box">
+                <label for="metodoPago">Método de Pago:</label>
+                <select name="metodoPago" id="metodoPago" required>
+                    <option value="">Seleccione un Método de Pago</option>
+                    <option value="efectivo">Efectivo</option>
+                    <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                </select>
             </div>
-            <div class="input-group">
-                <div class="input-box">
-                    <label for="canchaID">Cancha:</label>
-                    <select name="canchaID" id="canchaID" onchange="cargarHorarios()" required>
-                        <option value="">Seleccione una Cancha</option>
-                    </select>
-                </div>
-                <div class="input-box">
-                    <label for="horarioID">Horario:</label>
-                    <select name="horarioID" id="horarioID" required>
-                        <option value="">Seleccione un Horario</option>
-                    </select>
-                </div>
-            </div>
-            <div class="input-group">
-                <div class="input-box">
-                    <label for="fechaReserva">Fecha de Reserva:</label>
-                    <input type="date" name="fechaReserva" id="fechaReserva" required>
-                </div>
-            </div>
-            <input type="submit" value="Reservar">
-        </form>
+    </div>
+
+    <input type="submit" value="Reservar">
+</form>
+
+
+
+
+
+
+
+
     </div>
 </section>
 

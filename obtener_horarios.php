@@ -1,23 +1,25 @@
 <?php
-include('conexion.php'); // Asegúrate de incluir tu archivo de conexión
+include('conexion.php');
 
-// Verifica que el canchaID se haya enviado
-if (isset($_GET['canchaID'])) {
-    $canchaID = $_GET['canchaID'];
+$canchaID = $_GET['canchaID'];
 
-    // Obtener los horarios de la cancha seleccionada
-    $sql = "SELECT HorarioID, HoraInicio, HoraFin FROM horarios WHERE CanchaID = ?";
-    $stmt = $conexion->prepare($sql);
-    $stmt->bind_param("i", $canchaID); // 'i' indica que es un entero
-    $stmt->execute();
-    $result = $stmt->get_result();
+// Consulta para obtener los horarios de la cancha seleccionada
+$sql_horarios = "SELECT HorarioID, Fecha, HoraInicio, HoraFin 
+                 FROM Horario 
+                 WHERE CanchaID = ? AND Disponible = 1";
+$stmt = $conexion->prepare($sql_horarios);
+$stmt->bind_param("i", $canchaID);
+$stmt->execute();
+$result = $stmt->get_result();
 
-    $horarios = array();
-    while ($row = $result->fetch_assoc()) {
-        $horarios[] = $row; // Agregar cada horario al array
-    }
-
-    // Retornar los datos en formato JSON
-    echo json_encode($horarios);
+$horarios = [];
+while ($row = $result->fetch_assoc()) {
+    $horarios[] = $row;
 }
+
+// Devolver los resultados en formato JSON
+echo json_encode($horarios);
+
+$stmt->close();
+$conexion->close();
 ?>

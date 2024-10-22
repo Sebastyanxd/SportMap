@@ -20,7 +20,7 @@ if (isset($_POST['register'])) {
         $password = trim($_POST['Contrasena']);
 
         // Verificar si el email ya existe en la base de datos
-        $consulta_email = $conexion->prepare("SELECT * FROM usuarios WHERE Email = ?");
+        $consulta_email = $conexion->prepare("SELECT * FROM usuario WHERE Email = ?");
         $consulta_email->bind_param("s", $email);
         $consulta_email->execute();
         $resultado_email = $consulta_email->get_result();
@@ -34,7 +34,7 @@ if (isset($_POST['register'])) {
             $fecha = date("Y-m-d");
 
             // Guardar la contraseña hasheada en la base de datos
-            $consulta = $conexion->prepare("INSERT INTO usuarios (Nombre, Email, Direccion, Telefono, Contrasena, FechaRegistro) VALUES (?, ?, ?, ?, ?, ?)");
+            $consulta = $conexion->prepare("INSERT INTO usuario (Nombre, Email, Direccion, Telefono, Contrasena, FechaRegistro) VALUES (?, ?, ?, ?, ?, ?)");
             $consulta->bind_param("ssssss", $name, $email, $direction, $phone, $hashed_password, $fecha);
 
             if ($consulta->execute()) {

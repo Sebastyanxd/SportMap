@@ -14,7 +14,7 @@ if (!empty($_POST["login"])) {
         $password = trim($_POST["password"]);
 
         // Consulta para obtener los datos del usuario por email
-        $stmt = $conexion->prepare("SELECT * FROM usuarios WHERE Email = ?"); // Cambié 'sportmap' por 'usuarios'
+        $stmt = $conexion->prepare("SELECT * FROM usuario WHERE Email = ?"); // Cambié 'sportmap' por 'usuario'
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
