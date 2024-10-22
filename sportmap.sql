@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-10-2024 a las 12:06:35
+-- Tiempo de generación: 22-10-2024 a las 03:21:59
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -685,8 +685,7 @@ CREATE TABLE `reservas` (
 --
 
 INSERT INTO `reservas` (`ReservaID`, `UsuarioID`, `CanchaID`, `NombreCentro`, `Comuna`, `HorarioID`, `FechaReserva`, `HoraReserva`, `HoraInicioReserva`, `HoraFinReserva`, `NombreCancha`, `NombreUsuario`) VALUES
-(59, 1, 13, 'Sport Park Malloco', 'Peñaflor', 66, '2024-10-21', '12:01:38', '08:00:00', '09:00:00', 'Cancha 1', 'sebastian'),
-(60, 1, 13, 'Sport Park Malloco', 'Peñaflor', 78, '2024-10-26', '12:06:07', '20:00:00', '21:00:00', 'Cancha 1', 'sebastian');
+(59, 1, 13, 'Sport Park Malloco', 'Peñaflor', 66, '2024-10-21', '12:01:38', '08:00:00', '09:00:00', 'Cancha 1', 'sebastian');
 
 -- --------------------------------------------------------
 
@@ -791,7 +790,7 @@ ALTER TABLE `horarios`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `ReservaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `ReservaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
