@@ -29,7 +29,7 @@
     </div>
 
     <div class="input-wrapper">
-        <input type="tel" name="Telefono" placeholder="Teléfono" pattern="^\+569[0-9]{8}$" required>
+        <input type="tel" name="Telefono" placeholder="Teléfono" pattern="^\569[0-9]{8}$" required>
         <img class="input-icon" src="images/phone.svg" alt="">
     </div>
 
