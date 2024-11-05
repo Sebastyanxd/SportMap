@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-10-2024 a las 23:52:35
+-- Tiempo de generación: 06-11-2024 a las 00:22:58
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -45,10 +45,36 @@ CREATE TABLE `canchas` (
 --
 
 INSERT INTO `canchas` (`CanchaID`, `CentroID`, `Numero`, `TipoCancha`, `Capacidad`, `PrecioPorHora`, `Caracteristicas`, `EstadoActivo`, `FechaCreacion`, `UltimaModificacion`) VALUES
-(1, 1, 'C1', 'Fútbol', 22, 100.00, NULL, 1, '2024-10-22 14:07:51', '2024-10-22 14:07:51'),
-(2, 1, 'C2', 'Tenis', 4, 50.00, NULL, 1, '2024-10-22 14:07:51', '2024-10-22 14:07:51'),
-(3, 2, 'C1', 'Básquetbol', 10, 75.00, NULL, 1, '2024-10-22 14:07:51', '2024-10-22 14:07:51'),
-(4, 3, 'C1', 'Fútbol Sala', 12, 80.00, NULL, 1, '2024-10-22 14:07:51', '2024-10-22 14:07:51');
+(5, 6, 'C1', 'Fútbol', 10, 2000.00, 'Cancha de césped sintético', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(6, 6, 'C2', 'Fútbol', 12, 2500.00, 'Cancha con iluminación nocturna', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(7, 6, 'C3', 'Fútbol', 15, 2300.00, 'Cancha techada', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(8, 7, 'C1', 'Fútbol', 10, 1500.00, 'Cancha de césped natural', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(9, 7, 'C2', 'Fútbol', 12, 2200.00, 'Cancha con gradas', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(10, 8, 'C1', 'Fútbol', 8, 1800.00, 'Cancha pequeña para entrenamiento', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(11, 8, 'C2', 'Fútbol', 10, 2100.00, 'Cancha al aire libre', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(12, 8, 'C3', 'Fútbol', 14, 2600.00, 'Cancha techada con vestidores', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(13, 8, 'C4', 'Fútbol', 12, 2400.00, 'Cancha de césped natural', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(14, 9, 'C1', 'Fútbol', 12, 1700.00, 'Cancha con asientos para espectadores', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(15, 9, 'C2', 'Fútbol', 15, 2200.00, 'Cancha con buena iluminación', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(16, 10, 'C1', 'Fútbol', 10, 2500.00, 'Cancha techada', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(17, 10, 'C2', 'Fútbol', 8, 2000.00, 'Cancha de césped sintético', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(18, 10, 'C3', 'Fútbol', 14, 2700.00, 'Cancha con vestidores y gradas', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(19, 11, 'C1', 'Fútbol', 12, 2300.00, 'Cancha de césped natural', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(20, 11, 'C2', 'Fútbol', 10, 2100.00, 'Cancha con iluminación', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(21, 12, 'C1', 'Fútbol', 8, 1800.00, 'Cancha para niños', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(22, 12, 'C2', 'Fútbol', 10, 2000.00, 'Cancha techada', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(23, 13, 'C1', 'Fútbol', 10, 2100.00, 'Cancha con buen drenaje', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(24, 13, 'C2', 'Fútbol', 8, 1900.00, 'Cancha de césped sintético', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(25, 13, 'C3', 'Fútbol', 14, 2300.00, 'Cancha con gradas y vestidores', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(26, 14, 'C1', 'Fútbol', 15, 2600.00, 'Cancha de entrenamiento', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(27, 14, 'C2', 'Fútbol', 10, 2500.00, 'Cancha techada', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(28, 15, 'C1', 'Fútbol', 12, 2000.00, 'Cancha al aire libre', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(29, 15, 'C2', 'Fútbol', 15, 2700.00, 'Cancha techada con cafetería', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(30, 16, 'C1', 'Fútbol', 10, 2200.00, 'Cancha techada', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(31, 16, 'C2', 'Fútbol', 8, 1800.00, 'Cancha de césped sintético', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(32, 17, 'C1', 'Fútbol', 12, 2300.00, 'Cancha con gradas', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(33, 17, 'C2', 'Fútbol', 10, 2100.00, 'Cancha al aire libre', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08'),
+(34, 17, 'C3', 'Fútbol', 15, 2500.00, 'Cancha con iluminación nocturna', 1, '2024-11-05 12:20:08', '2024-11-05 12:20:08');
 
 -- --------------------------------------------------------
 
@@ -75,10 +101,18 @@ CREATE TABLE `centrosdeportivos` (
 --
 
 INSERT INTO `centrosdeportivos` (`CentroID`, `Nombre`, `Ubicacion`, `Telefono`, `Email`, `Descripcion`, `TipoCentro`, `Activo`, `FechaCreacion`, `UltimaModificacion`, `Comuna`) VALUES
-(1, 'SportCenter Elite', 'Av. Principal 123', '555-0101', 'info@sportelite.com', 'Centro deportivo de primera clase', 'Premium', 1, '2024-10-22 14:07:51', '2024-10-22 14:24:56', 'Comuna A'),
-(2, 'Campo Alegre', 'Calle 45 #789', '555-0102', 'campo@alegre.com', 'Instalaciones familiares', 'Familiar', 1, '2024-10-22 14:07:51', '2024-10-22 14:24:56', 'Comuna B'),
-(3, 'Urban Sports', 'Plaza Central 456', '555-0103', 'urban@sports.com', 'Deportes urbanos', 'Urbano', 1, '2024-10-22 14:07:51', '2024-10-22 14:24:56', 'Comuna C'),
-(4, 'Club Deportivo Norte', 'Av. Norte 789', '555-0104', 'club@norte.com', 'Centro deportivo completo', 'Premium', 1, '2024-10-22 14:07:51', '2024-10-22 14:24:56', 'Comuna D');
+(6, 'Sport Park Malloco', 'Ubicación F', '+56987235467', 'sportparkmalloco@gmail.com', 'Centro deportivo en Malloco', 'futbolito', 1, '2024-11-05 12:16:00', '2024-11-05 12:16:00', 'Peñaflor'),
+(7, 'Canchas San Javier', 'Ubicación G', '+56993487612', 'canchassanjavier@gmail.com', 'Centro deportivo en Peñaflor', 'futbolito', 1, '2024-11-05 12:16:00', '2024-11-05 12:16:00', 'Peñaflor'),
+(8, 'Club del Valle Peñaflor', 'Ubicación H', '+56975123984', 'clubdelvallepenaflor@hotmail.com', 'Centro deportivo en Peñaflor', 'futbolito', 1, '2024-11-05 12:16:00', '2024-11-05 12:16:00', 'Peñaflor'),
+(9, 'Cancha Club Deportivo Estrella de Nazareth', 'Ubicación I', '+56961573829', 'clubdeportivoestrellanazareth@gmail.com', 'Centro deportivo en Peñaflor', 'futbolito', 1, '2024-11-05 12:16:00', '2024-11-05 12:16:00', 'Peñaflor'),
+(10, 'Ex Polideportivo Cerrillos', 'Ubicación J', '+56948392175', 'expolideportivocerrillos@hotmail.com', 'Centro deportivo en Cerrillos', 'futbolito', 1, '2024-11-05 12:16:00', '2024-11-05 12:16:00', 'Cerrillos'),
+(11, 'Cancha de pasto Cerrillos', 'Ubicación K', '+56992756184', 'cancha.cerrillos@gmail.com', 'Centro deportivo en Cerrillos', 'futbolito', 1, '2024-11-05 12:16:00', '2024-11-05 12:16:00', 'Cerrillos'),
+(12, 'Multicancha Las Tres Villas', 'Ubicación L', '+56983649215', 'multicanchalastresvillas@gmail.com', 'Centro deportivo en Cerrillos', 'futbolito', 1, '2024-11-05 12:16:00', '2024-11-05 12:16:00', 'Cerrillos'),
+(13, 'Multicancha Los Presidentes', 'Ubicación M', '+56974259831', 'multicanchalospresidentes@gmail.com', 'Centro deportivo en Cerrillos', 'futbolito', 1, '2024-11-05 12:16:00', '2024-11-05 12:16:00', 'Cerrillos'),
+(14, 'Power Soccer', 'Ubicación N', '+56969348527', 'powersoccer@hotmail.com', 'Centro deportivo en Talagante', 'futbolito', 1, '2024-11-05 12:16:00', '2024-11-05 12:16:00', 'Talagante'),
+(15, 'Canchas Club Rabona & Bier Garden', 'Ubicación O', '+56952487369', 'clubrabona@gmail.com', 'Centro deportivo en Talagante', 'futbolito', 1, '2024-11-05 12:16:00', '2024-11-05 12:16:00', 'Talagante'),
+(16, 'Club Carampangue', 'Ubicación P', '+56987521439', 'clubcarampangue@hotmail.com', 'Centro deportivo en Talagante', 'futbolito', 1, '2024-11-05 12:16:00', '2024-11-05 12:16:00', 'Talagante'),
+(17, 'Cancha Club Deportivo Talagante', 'Ubicación Q', '+56931465872', 'clubdeportivotalagante@gmail.com', 'Centro deportivo en Talagante', 'futbolito', 1, '2024-11-05 12:16:00', '2024-11-05 12:16:00', 'Talagante');
 
 --
 -- Disparadores `centrosdeportivos`
@@ -106,16 +140,6 @@ CREATE TABLE `equipamiento` (
   `Estado` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `equipamiento`
---
-
-INSERT INTO `equipamiento` (`EquipamientoID`, `CanchaID`, `Nombre`, `Descripcion`, `Cantidad`, `Estado`) VALUES
-(1, 1, 'Balón Fútbol', 'Balón oficial tamaño 5', 5, 'Bueno'),
-(2, 1, 'Red', 'Red de portería', 2, 'Excelente'),
-(3, 2, 'Raquetas', 'Raquetas de tenis', 4, 'Bueno'),
-(4, 2, 'Pelotas Tenis', 'Tubo de pelotas', 12, 'Nuevo');
-
 -- --------------------------------------------------------
 
 --
@@ -137,10 +161,309 @@ CREATE TABLE `horario` (
 --
 
 INSERT INTO `horario` (`HorarioID`, `CanchaID`, `Fecha`, `HoraInicio`, `HoraFin`, `Disponible`, `EstadoHorario`) VALUES
-(1, 1, '2024-10-22', '08:00:00', '09:00:00', 1, NULL),
-(2, 1, '2024-10-22', '09:00:00', '10:00:00', 1, NULL),
-(3, 2, '2024-10-22', '08:00:00', '09:00:00', 1, NULL),
-(4, 2, '2024-10-22', '09:00:00', '10:00:00', 0, NULL);
+(5, 5, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(6, 5, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(7, 5, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(8, 5, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(9, 5, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(10, 5, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(11, 5, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(12, 5, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(13, 5, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(14, 5, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(15, 5, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(16, 5, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(17, 5, '2024-11-06', '20:00:00', '21:00:00', 1, 'Disponible'),
+(18, 6, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(19, 6, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(20, 6, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(21, 6, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(22, 6, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(23, 6, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(24, 6, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(25, 6, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(26, 6, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(27, 6, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(28, 6, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(29, 6, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(30, 6, '2024-11-06', '20:00:00', '21:00:00', 1, 'Disponible'),
+(31, 7, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(32, 7, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(33, 7, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(34, 7, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(35, 7, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(36, 7, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(37, 7, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(38, 7, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(39, 7, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(40, 7, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(41, 7, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(42, 7, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(43, 7, '2024-11-06', '20:00:00', '21:00:00', 1, 'Disponible'),
+(44, 8, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(45, 8, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(46, 8, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(47, 8, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(48, 8, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(49, 8, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(50, 8, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(51, 8, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(52, 8, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(53, 8, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(54, 8, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(55, 8, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(56, 9, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(57, 9, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(58, 9, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(59, 9, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(60, 9, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(61, 9, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(62, 9, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(63, 9, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(64, 9, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(65, 9, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(66, 9, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(67, 9, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(68, 10, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(69, 10, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(70, 10, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(71, 10, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(72, 10, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(73, 10, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(74, 10, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(75, 10, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(76, 10, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(77, 10, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(78, 10, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(79, 10, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(80, 11, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(81, 11, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(82, 11, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(83, 11, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(84, 11, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(85, 11, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(86, 11, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(87, 11, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(88, 11, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(89, 11, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(90, 11, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(91, 11, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(92, 12, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(93, 12, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(94, 12, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(95, 12, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(96, 12, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(97, 12, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(98, 12, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(99, 12, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(100, 12, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(101, 12, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(102, 12, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(103, 12, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(104, 13, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(105, 13, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(106, 13, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(107, 13, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(108, 13, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(109, 13, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(110, 13, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(111, 13, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(112, 13, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(113, 13, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(114, 13, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(115, 13, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(116, 14, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(117, 14, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(118, 14, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(119, 14, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(120, 14, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(121, 14, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(122, 14, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(123, 14, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(124, 14, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(125, 14, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(126, 14, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(127, 14, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(128, 15, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(129, 15, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(130, 15, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(131, 15, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(132, 15, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(133, 15, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(134, 15, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(135, 15, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(136, 15, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(137, 15, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(138, 15, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(139, 15, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(140, 16, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(141, 16, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(142, 16, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(143, 16, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(144, 16, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(145, 16, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(146, 16, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(147, 16, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(148, 16, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(149, 16, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(150, 16, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(151, 16, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(152, 17, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(153, 17, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(154, 17, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(155, 17, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(156, 17, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(157, 17, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(158, 17, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(159, 17, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(160, 17, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(161, 17, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(162, 17, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(163, 17, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(164, 18, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(165, 18, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(166, 18, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(167, 18, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(168, 18, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(169, 18, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(170, 18, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(171, 18, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(172, 18, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(173, 18, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(174, 18, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(175, 18, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(176, 19, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(177, 19, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(178, 19, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(179, 19, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(180, 19, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(181, 19, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(182, 19, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(183, 19, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(184, 19, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(185, 19, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(186, 19, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(187, 19, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(188, 20, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(189, 20, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(190, 20, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(191, 20, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(192, 20, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(193, 20, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(194, 20, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(195, 20, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(196, 20, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(197, 20, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(198, 20, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(199, 20, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(200, 21, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(201, 21, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(202, 21, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(203, 21, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(204, 21, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(205, 21, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(206, 21, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(207, 21, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(208, 21, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(209, 21, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(210, 21, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(211, 21, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(212, 22, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(213, 22, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(214, 22, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(215, 22, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(216, 22, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(217, 22, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(218, 22, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(219, 22, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(220, 22, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(221, 22, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(222, 22, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(223, 22, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(224, 23, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(225, 23, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(226, 23, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(227, 23, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(228, 23, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(229, 23, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(230, 23, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(231, 23, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(232, 23, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(233, 23, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(234, 23, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(235, 23, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(236, 24, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(237, 24, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(238, 24, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(239, 24, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(240, 24, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(241, 24, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(242, 24, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(243, 24, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(244, 24, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(245, 24, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(246, 24, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(247, 24, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(248, 25, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(249, 25, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(250, 25, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(251, 25, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(252, 25, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(253, 25, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(254, 25, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(255, 25, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(256, 25, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(257, 25, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(258, 25, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(259, 25, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(260, 26, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(261, 26, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(262, 26, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(263, 26, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(264, 26, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(265, 26, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(266, 26, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(267, 26, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(268, 26, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(269, 26, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(270, 26, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(271, 26, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(272, 27, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(273, 27, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(274, 27, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(275, 27, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(276, 27, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(277, 27, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(278, 27, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(279, 27, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(280, 27, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(281, 27, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(282, 27, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(283, 27, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(284, 28, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(285, 28, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(286, 28, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(287, 28, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(288, 28, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(289, 28, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(290, 28, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(291, 28, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(292, 28, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(293, 28, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(294, 28, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(295, 28, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible'),
+(296, 29, '2024-11-06', '08:00:00', '09:00:00', 1, 'Disponible'),
+(297, 29, '2024-11-06', '09:00:00', '10:00:00', 1, 'Disponible'),
+(298, 29, '2024-11-06', '10:00:00', '11:00:00', 1, 'Disponible'),
+(299, 29, '2024-11-06', '11:00:00', '12:00:00', 1, 'Disponible'),
+(300, 29, '2024-11-06', '12:00:00', '13:00:00', 1, 'Disponible'),
+(301, 29, '2024-11-06', '13:00:00', '14:00:00', 1, 'Disponible'),
+(302, 29, '2024-11-06', '14:00:00', '15:00:00', 1, 'Disponible'),
+(303, 29, '2024-11-06', '15:00:00', '16:00:00', 1, 'Disponible'),
+(304, 29, '2024-11-06', '16:00:00', '17:00:00', 1, 'Disponible'),
+(305, 29, '2024-11-06', '17:00:00', '18:00:00', 1, 'Disponible'),
+(306, 29, '2024-11-06', '18:00:00', '19:00:00', 1, 'Disponible'),
+(307, 29, '2024-11-06', '19:00:00', '20:00:00', 1, 'Disponible');
 
 -- --------------------------------------------------------
 
@@ -156,17 +479,6 @@ CREATE TABLE `horariooperacion` (
   `HoraCierre` time NOT NULL,
   `EsFeriado` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `horariooperacion`
---
-
-INSERT INTO `horariooperacion` (`HorarioOpID`, `CentroID`, `DiaSemana`, `HoraApertura`, `HoraCierre`, `EsFeriado`) VALUES
-(1, 1, 'Lunes', '06:00:00', '23:00:00', 0),
-(2, 1, 'Martes', '06:00:00', '23:00:00', 0),
-(3, 1, 'Miércoles', '06:00:00', '23:00:00', 0),
-(4, 2, 'Lunes', '07:00:00', '22:00:00', 0),
-(5, 2, 'Martes', '07:00:00', '22:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -190,25 +502,45 @@ CREATE TABLE `logsauditoria` (
 --
 
 INSERT INTO `logsauditoria` (`LogID`, `TipoOperacion`, `TablaAfectada`, `RegistroID`, `Detalles`, `UsuarioID`, `FechaOperacion`, `DireccionIP`) VALUES
-(1, 'INSERT', 'CentrosDeportivos', 1, 'Nuevo centro deportivo: SportCenter Elite', NULL, '2024-10-22 14:07:51', NULL),
-(2, 'INSERT', 'CentrosDeportivos', 2, 'Nuevo centro deportivo: Campo Alegre', NULL, '2024-10-22 14:07:51', NULL),
-(3, 'INSERT', 'CentrosDeportivos', 3, 'Nuevo centro deportivo: Urban Sports', NULL, '2024-10-22 14:07:51', NULL),
-(4, 'INSERT', 'CentrosDeportivos', 4, 'Nuevo centro deportivo: Club Deportivo Norte', NULL, '2024-10-22 14:07:51', NULL),
-(5, 'INSERT', 'CentrosDeportivos', 5, 'Nuevo centro deportivo: SportCenter Elite', NULL, '2024-10-22 14:09:40', NULL),
-(6, 'INSERT', 'CentrosDeportivos', 6, 'Nuevo centro deportivo: Campo Alegre', NULL, '2024-10-22 14:09:40', NULL),
-(7, 'INSERT', 'CentrosDeportivos', 7, 'Nuevo centro deportivo: Urban Sports', NULL, '2024-10-22 14:09:40', NULL),
-(8, 'INSERT', 'CentrosDeportivos', 8, 'Nuevo centro deportivo: Club Deportivo Norte', NULL, '2024-10-22 14:09:40', NULL),
-(9, 'INSERT', 'Reservas', 5, 'Nueva reserva: RES-6717f3a471219', 11, '2024-10-22 14:49:08', NULL),
-(10, 'INSERT', 'Reservas', 6, 'Nueva reserva: RES-6717f47f57404', 11, '2024-10-22 14:52:47', NULL),
-(11, 'INSERT', 'Reservas', 7, 'Nueva reserva: RES-6717f52d6f055', 11, '2024-10-22 14:55:41', NULL),
-(12, 'INSERT', 'Reservas', 8, 'Nueva reserva: RES-671801326b1a0', 11, '2024-10-22 15:46:58', NULL),
-(13, 'INSERT', 'Reservas', 9, 'Nueva reserva: RES-671801ae0aac2', 11, '2024-10-22 15:49:02', NULL),
-(14, 'INSERT', 'Reservas', 10, 'Nueva reserva: RES-671801c5491ff', 11, '2024-10-22 15:49:25', NULL),
-(15, 'INSERT', 'Reservas', 11, 'Nueva reserva: RES-671801f582dad', 11, '2024-10-22 15:50:13', NULL),
-(16, 'INSERT', 'Reservas', 12, 'Nueva reserva: RES-671802757d7fe', 11, '2024-10-22 15:52:21', NULL),
-(17, 'INSERT', 'Reservas', 13, 'Nueva reserva: RES-671805dea6cba', 11, '2024-10-22 16:06:54', NULL),
-(18, 'INSERT', 'Reservas', 14, 'Nueva reserva: RES-671806bd8f336', 11, '2024-10-22 16:10:37', NULL),
-(19, 'INSERT', 'Reservas', 15, 'Nueva reserva: RES-67180bda57ed6', 11, '2024-10-22 16:32:26', NULL);
+(20, 'INSERT', 'Reservas', 16, 'Nueva reserva: RES-6723ea12ade86', 10, '2024-10-31 16:35:30', NULL),
+(21, 'INSERT', 'Reservas', 17, 'Nueva reserva: RES-672a3fc73440a', 10, '2024-11-05 11:54:47', NULL),
+(22, 'INSERT', 'CentrosDeportivos', 6, 'Nuevo centro deportivo: Sport Park Malloco', NULL, '2024-11-05 12:13:47', NULL),
+(23, 'INSERT', 'CentrosDeportivos', 7, 'Nuevo centro deportivo: Canchas San Javier', NULL, '2024-11-05 12:13:47', NULL),
+(24, 'INSERT', 'CentrosDeportivos', 8, 'Nuevo centro deportivo: Club del Valle Peñaflor', NULL, '2024-11-05 12:13:47', NULL),
+(25, 'INSERT', 'CentrosDeportivos', 9, 'Nuevo centro deportivo: Cancha Club Deportivo Estrella de Nazareth', NULL, '2024-11-05 12:13:47', NULL),
+(26, 'INSERT', 'CentrosDeportivos', 10, 'Nuevo centro deportivo: Ex Polideportivo Cerrillos', NULL, '2024-11-05 12:13:47', NULL),
+(27, 'INSERT', 'CentrosDeportivos', 11, 'Nuevo centro deportivo: Cancha de pasto Cerrillos', NULL, '2024-11-05 12:13:47', NULL),
+(28, 'INSERT', 'CentrosDeportivos', 12, 'Nuevo centro deportivo: Multicancha Las Tres Villas', NULL, '2024-11-05 12:13:47', NULL),
+(29, 'INSERT', 'CentrosDeportivos', 13, 'Nuevo centro deportivo: Multicancha Los Presidentes', NULL, '2024-11-05 12:13:47', NULL),
+(30, 'INSERT', 'CentrosDeportivos', 14, 'Nuevo centro deportivo: Power Soccer', NULL, '2024-11-05 12:13:47', NULL),
+(31, 'INSERT', 'CentrosDeportivos', 15, 'Nuevo centro deportivo: Canchas Club Rabona & Bier Garden', NULL, '2024-11-05 12:13:47', NULL),
+(32, 'INSERT', 'CentrosDeportivos', 16, 'Nuevo centro deportivo: Club Carampangue', NULL, '2024-11-05 12:13:47', NULL),
+(33, 'INSERT', 'CentrosDeportivos', 17, 'Nuevo centro deportivo: Cancha Club Deportivo Talagante', NULL, '2024-11-05 12:13:47', NULL),
+(34, 'INSERT', 'CentrosDeportivos', 6, 'Nuevo centro deportivo: Sport Park Malloco', NULL, '2024-11-05 12:16:00', NULL),
+(35, 'INSERT', 'CentrosDeportivos', 7, 'Nuevo centro deportivo: Canchas San Javier', NULL, '2024-11-05 12:16:00', NULL),
+(36, 'INSERT', 'CentrosDeportivos', 8, 'Nuevo centro deportivo: Club del Valle Peñaflor', NULL, '2024-11-05 12:16:00', NULL),
+(37, 'INSERT', 'CentrosDeportivos', 9, 'Nuevo centro deportivo: Cancha Club Deportivo Estrella de Nazareth', NULL, '2024-11-05 12:16:00', NULL),
+(38, 'INSERT', 'CentrosDeportivos', 10, 'Nuevo centro deportivo: Ex Polideportivo Cerrillos', NULL, '2024-11-05 12:16:00', NULL),
+(39, 'INSERT', 'CentrosDeportivos', 11, 'Nuevo centro deportivo: Cancha de pasto Cerrillos', NULL, '2024-11-05 12:16:00', NULL),
+(40, 'INSERT', 'CentrosDeportivos', 12, 'Nuevo centro deportivo: Multicancha Las Tres Villas', NULL, '2024-11-05 12:16:00', NULL),
+(41, 'INSERT', 'CentrosDeportivos', 13, 'Nuevo centro deportivo: Multicancha Los Presidentes', NULL, '2024-11-05 12:16:00', NULL),
+(42, 'INSERT', 'CentrosDeportivos', 14, 'Nuevo centro deportivo: Power Soccer', NULL, '2024-11-05 12:16:00', NULL),
+(43, 'INSERT', 'CentrosDeportivos', 15, 'Nuevo centro deportivo: Canchas Club Rabona & Bier Garden', NULL, '2024-11-05 12:16:00', NULL),
+(44, 'INSERT', 'CentrosDeportivos', 16, 'Nuevo centro deportivo: Club Carampangue', NULL, '2024-11-05 12:16:00', NULL),
+(45, 'INSERT', 'CentrosDeportivos', 17, 'Nuevo centro deportivo: Cancha Club Deportivo Talagante', NULL, '2024-11-05 12:16:00', NULL),
+(46, 'INSERT', 'Reservas', 18, 'Nueva reserva: RES-672a4789c6c1b', 10, '2024-11-05 12:27:53', NULL),
+(47, 'INSERT', 'Reservas', 19, 'Nueva reserva: RES-672a49fc459cc', 10, '2024-11-05 12:38:20', NULL),
+(48, 'INSERT', 'Reservas', 20, 'Nueva reserva: RES-672a4e96a881e', 10, '2024-11-05 12:57:58', NULL),
+(49, 'INSERT', 'Reservas', 21, 'Nueva reserva: RES-672a501ee8b34', 10, '2024-11-05 13:04:30', NULL),
+(50, 'INSERT', 'Reservas', 22, 'Nueva reserva: RES-672a50f8273ca', 10, '2024-11-05 13:08:08', NULL),
+(51, 'INSERT', 'Reservas', 23, 'Nueva reserva: RES-672a512017032', 10, '2024-11-05 13:08:48', NULL),
+(52, 'INSERT', 'Reservas', 24, 'Nueva reserva: RES-672a515e89c02', 10, '2024-11-05 13:09:50', NULL),
+(53, 'INSERT', 'Reservas', 25, 'Nueva reserva: RES-672a51b78140b', 10, '2024-11-05 13:11:19', NULL),
+(54, 'INSERT', 'Reservas', 26, 'Nueva reserva: RES-672a51cd10900', 10, '2024-11-05 13:11:41', NULL),
+(55, 'INSERT', 'Reservas', 27, 'Nueva reserva: RES-672a53cebf7eb', 10, '2024-11-05 13:20:14', NULL),
+(56, 'INSERT', 'Reservas', 28, 'Nueva reserva: RES-672a5b62562b2', 10, '2024-11-05 13:52:34', NULL),
+(57, 'INSERT', 'Reservas', 29, 'Nueva reserva: RES-672a5ba52d443', 10, '2024-11-05 13:53:41', NULL),
+(58, 'INSERT', 'Reservas', 30, 'Nueva reserva: RES-672a60672637c', 10, '2024-11-05 14:13:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -270,8 +602,7 @@ CREATE TABLE `reservas` (
 --
 
 INSERT INTO `reservas` (`ReservaID`, `CodigoReserva`, `UsuarioID`, `CanchaID`, `HorarioID`, `FechaReserva`, `HoraInicioReserva`, `HoraFinReserva`, `EstadoReserva`, `MontoTotal`, `MetodoPago`, `FechaCreacion`, `UltimaModificacion`) VALUES
-(14, 'RES-671806bd8f336', 11, 1, 1, '2024-10-25', '08:00:00', '09:00:00', 'pendiente', '100.00', 'debito', '2024-10-22 16:10:37', '2024-10-22 16:10:37'),
-(15, 'RES-67180bda57ed6', 11, 1, 1, '2024-10-30', '08:00:00', '09:00:00', 'pendiente', '100.00', 'efectivo', '2024-10-22 16:32:26', '2024-10-22 16:32:26');
+(30, 'RES-672a60672637c', 10, 12, 99, '2024-11-13', '15:00:00', '16:00:00', 'pendiente', '2600.00', 'tarjeta', '2024-11-05 14:13:59', '2024-11-05 14:13:59');
 
 --
 -- Disparadores `reservas`
@@ -299,16 +630,6 @@ CREATE TABLE `servicios` (
   `Precio` decimal(10,2) DEFAULT NULL,
   `Disponible` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `servicios`
---
-
-INSERT INTO `servicios` (`ServicioID`, `CentroID`, `Nombre`, `Descripcion`, `Precio`, `Disponible`) VALUES
-(1, 1, 'Vestidores Premium', 'Vestidores con casilleros electrónicos', 25.00, 1),
-(2, 1, 'Estacionamiento', 'Estacionamiento techado', 15.00, 1),
-(3, 2, 'Cafetería', 'Servicio de cafetería y snacks', 0.00, 1),
-(4, 3, 'Instructor Personal', 'Servicio de instructor personal', 45.00, 1);
 
 -- --------------------------------------------------------
 
@@ -482,37 +803,37 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `canchas`
 --
 ALTER TABLE `canchas`
-  MODIFY `CanchaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `CanchaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `centrosdeportivos`
 --
 ALTER TABLE `centrosdeportivos`
-  MODIFY `CentroID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `CentroID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `equipamiento`
 --
 ALTER TABLE `equipamiento`
-  MODIFY `EquipamientoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `EquipamientoID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `horario`
 --
 ALTER TABLE `horario`
-  MODIFY `HorarioID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `HorarioID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=308;
 
 --
 -- AUTO_INCREMENT de la tabla `horariooperacion`
 --
 ALTER TABLE `horariooperacion`
-  MODIFY `HorarioOpID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `HorarioOpID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `logsauditoria`
 --
 ALTER TABLE `logsauditoria`
-  MODIFY `LogID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `LogID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT de la tabla `promociones`
@@ -530,13 +851,13 @@ ALTER TABLE `resenas`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `ReservaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ReservaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `servicios`
 --
 ALTER TABLE `servicios`
-  MODIFY `ServicioID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ServicioID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `transacciones`
