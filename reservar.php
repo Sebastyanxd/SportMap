@@ -20,6 +20,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $centroID = $_POST['centroID']; // Obteniendo el ID del centro deportivo
     $fechaReserva = $_POST['fechaReserva']; // Obtener la fecha de reserva desde el formulario
 
+    // Validar la fecha de reserva
+$fechaActual = new DateTime(); // Fecha y hora actual
+$fechaReservaObj = wq($fechaReserva); // Crear objeto DateTime para la fecha de reserva
+
+if ($fechaReservaObj < $fechaActual) {
+    echo "
+        <script>
+            alert('Error: No se puede reservar para una fecha pasada.');
+            window.history.back();
+        </script>
+    ";
+    exit();
+}
+
+// Verificar si la reserva es para el mismo día
+if ($fechaReservaObj->format('Y-m-d') === $fechaActual->format('Y-m-d')) {
+    // Obtener la hora de inicio del horario seleccionado
+    $sql_horario = "SELECT HoraInicio FROM Horario WHERE HorarioID = ? AND CanchaID = ?";
+    $stmt_horario = $conexion->prepare($sql_horario);
+    $stmt_horario->bind_param("ii", $horarioID, $canchaID);
+    $stmt_horario->execute();
+    $resultado_horario = $stmt_horario->get_result();
+
+    if ($resultado_horario->num_rows > 0) {
+        $fila_horario = $resultado_horario->fetch_assoc();
+        $horaInicioReserva = new DateTime($fila_horario['HoraInicio']); // Guardar hora de inicio como objeto DateTime
+        // Comparar la hora de inicio con la hora actual
+        if ($horaInicioReserva <= $fechaActual) {
+            echo "
+                <script>
+                    alert('Error: El horario seleccionado debe ser posterior a la hora actual para reservas el mismo día.');
+                    window.history.back();
+                </script>
+            ";
+            exit();
+        }
+    } else {
+        echo "
+            <script>
+                alert('Horario no encontrado. Verifique que los datos son correctos: HorarioID: $horarioID, CanchaID: $canchaID.');
+                window.history.back();
+            </script>
+        ";
+        exit();
+    }
+}
+
+
     // Verificar el número de reservas del usuario
     $sql_verificar_limite = "SELECT COUNT(*) as total FROM Reservas WHERE UsuarioID = ?";
     $stmt_verificar_limite = $conexion->prepare($sql_verificar_limite);
@@ -191,12 +239,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Cambiar el tipo de dato de 'i' para canchaID y asegurarte que todos los tipos son correctos
         $stmt->bind_param("siisssssss", $codigoReserva, $usuarioID, $canchaID, $horarioID, $fechaReserva, $horaInicioReserva, $horaFinReserva, $estadoReserva, $montoTotal, $metodoPago);
 
-        // Ejecuta la consulta
         if ($stmt->execute()) {
             echo "
                 <script>
-                    alert('Reserva realizada con éxito.');
-                    window.location.href = 'index.php'; // Redirigir a la página principal o a donde quieras
+                    alert('Reserva realizada con éxito. Código de reserva: $codigoReserva');
+                    window.location.href = 'index.php';
                 </script>
             ";
         } else {
@@ -211,6 +258,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
     }
 }
+
 $conexion->close();
 ?>
 
