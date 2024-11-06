@@ -5,8 +5,12 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-color: #121212; /* Fondo oscuro */
 }
-
+.header .logo {
+    height: 5px; /* Ajusta el tamaño del logo */
+    width: auto;
+}
 
 form{
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);

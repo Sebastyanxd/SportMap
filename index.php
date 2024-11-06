@@ -1,6 +1,6 @@
 <?php
 session_start(); // Iniciar sesión
-print_r($_SESSION);
+
 
 // Verificar si la sesión está activa
 if (!isset($_SESSION['usuarioID'])) {
@@ -34,6 +34,7 @@ if (!isset($_SESSION['usuarioID'])) {
             <a href="#services">Servicios</a>
             <a href="#contact">Contacto</a>
             <a href="agendar.php">Agendar</a>
+            <a href="misreservas.php">Mis reservas</a>
             <a href="logout.php">Cerrar sesion</a>
             
         </nav>

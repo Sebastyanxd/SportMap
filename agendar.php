@@ -155,12 +155,14 @@ $sql_horarios_disponibles = "
     <a href="index.php" class="logo"> Sport<span>Maps</span></a>
     <i class='bx bx-menu' id="menu-icon"></i>
     <nav class="navbar">
-        <a href="index.php" class="active">Home</a>
-        <a href="index.php">Servicios</a>
-        <a href="index.php">Contacto</a>
-        <a href="agendar.php">Agendar</a>
-        <a href="logout.php">Cerrar sesion</a>
-    </nav>
+            <a href="index.php" class="active">Home</a>
+            <a href="index.php">Servicios</a>
+            <a href="index.php">Contacto</a>
+            <a href="agendar.php">Agendar</a>
+            <a href="misreservas.php">Mis reservas</a>
+            <a href="logout.php">Cerrar sesion</a>
+            
+        </nav>
 </header>
 
 <section class="agendar" id="agendar">

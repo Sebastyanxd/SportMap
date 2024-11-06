@@ -21,7 +21,12 @@ if (isset($_SESSION['email'])) {
 
     <form method="post" >
 
-    <h2>Bienvenido a "SportMap"</h2>
+    <div class="header" style="display: flex; justify-content: space-between; align-items: center;">
+    <h2 style="font-size: 25px; color: #0D0D0D; margin-right: 20px;">Bienvenido a <span>SportMap</span></h2>
+    <img src="images/logo.jpg" alt="Logo" class="logo" style="height: 200px; width: auto; margin-left: 20px;">
+</div>
+
+
     <?php
         include("controladorLogin.php");
         include("conexion.php");
