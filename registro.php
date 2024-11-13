@@ -10,7 +10,7 @@
 
     <form method="post" >
 
-    <h2>Regístrate</h2>
+    <h2>Hola</h2>
     <p>Inicia tu registro</p>
 
     <div class="input-wrapper">

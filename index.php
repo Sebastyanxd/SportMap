@@ -1,14 +1,3 @@
-<?php
-session_start(); // Iniciar sesión
-
-
-// Verificar si la sesión está activa
-if (!isset($_SESSION['usuarioID'])) {
-    header("Location: login.php"); // Redirigir a login.php si no está autenticado
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +12,7 @@ if (!isset($_SESSION['usuarioID'])) {
 <body>
 
 
-    <header class="header">
+<header class="header">
         <a href="#home" class="logo"> Sport
             <span>Maps</span></a>
 
@@ -62,11 +51,8 @@ if (!isset($_SESSION['usuarioID'])) {
             </div>
         </div>
         <div class="home-img">
-    <a href="agendar.php">
-        <img src="images/images2/bernabeu.png" alt="">
-    </a>
-</div>
-
+            <img src="images/images2/bernabeu.png" alt="">
+        </div>
 
     </section>
 
@@ -234,27 +220,32 @@ if (!isset($_SESSION['usuarioID'])) {
     </sectiion>
 
     <section class="contact" id="contact">
-    <h2 class="heading">contact <span>Me</span></h2>
+        <h2 class="heading">contact <span>Me</span>
+        </h2> 
 
-    <form action="guardar_contacto.php" method="POST">
-        <div class="input-group">
-            <div class="input-box">
-                <input type="text" name="nombre" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Email" required>
+        <form action="">
+            <div class="input-group">
+                <div class="input-box">
+                    <input type ="text"
+                    placeholder="Full Name">
+                    <input type="email"
+                    placeholder="Email">
+                </div>
+                <div class="input-box">
+                    <input type="number"
+                    placeholder="Phone Number">
+                    <input type="text"
+                    placeholder="Subject">
+                </div>
             </div>
-            <div class="input-box">
-                <input type="number" name="telefono" placeholder="Phone Number" required>
-                <input type="text" name="asunto" placeholder="Subject" required>
+
+            <div class="input-group-2">
+                <textarea name="" id="" cols="30" rows="10" 
+                placeholder="Your Message"></textarea>
+                <input type="submit" value="Send Messenge" class="btn">
             </div>
-        </div>
-
-        <div class="input-group-2">
-            <textarea name="mensaje" cols="30" rows="10" placeholder="Your Message" required></textarea>
-            <input type="submit" value="Send Message" class="btn">
-        </div>
-    </form>
-</section>
-
+        </form>    
+    </section>
 
     <footer class="footer">
         <div class="social">

@@ -1,0 +1,112 @@
+<?php
+// confirmacion_pago.php
+session_start();
+require 'conexion.php';
+
+if (!isset($_SESSION['reserva_actual'])) {
+    header("Location: index.php");
+    exit();
+}
+
+$reservaID = $_SESSION['reserva_actual'];
+$sql = "SELECT * FROM reservas WHERE ReservaID = ? AND UsuarioID = ?";
+$stmt = $conexion->prepare($sql);
+$stmt->bind_param("ii", $reservaID, $_SESSION['usuarioID']);
+$stmt->execute();
+$resultado = $stmt->get_result();
+$reserva = $resultado->fetch_assoc();
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Pago</title>
+    <link rel="stylesheet" href="style3.css">
+    <style>
+        .confirmation-container {
+            max-width: 600px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: #333;
+            border-radius: 12px;
+            color: white;
+            text-align: center;
+        }
+        .success-icon {
+            font-size: 4rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        .confirmation-details {
+            margin: 2rem 0;
+            text-align: left;
+            padding: 1rem;
+            background: #444;
+            border-radius: 8px;
+        }
+        .detail-item {
+            margin: 0.5rem 0;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #555;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        .back-button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.php" class="logo">Sport<span>Maps</span></a>
+        <nav class="navbar">
+            <a href="index.php">Home</a>
+            <a href="index.php">Servicios</a>
+            <a href="index.php">Contacto</a>
+            <a href="agendar.php">Agendar</a>
+            <a href="logout.php">Cerrar sesión</a>
+        </nav>
+    </header>
+
+    <div class="confirmation-container">
+        <div class="success-icon">✓</div>
+        <h2>¡Pago Completado con Éxito!</h2>
+        
+        <div class="confirmation-details">
+            <div class="detail-item">
+                <strong>Número de Reserva:</strong> <?php echo $reserva['ReservaID']; ?>
+            </div>
+            <div class="detail-item">
+                <strong>Centro Deportivo:</strong> <?php echo htmlspecialchars($reserva['NombreCentro']); ?>
+            </div>
+            <div class="detail-item">
+                <strong>Cancha:</strong> <?php echo htmlspecialchars($reserva['NombreCancha']); ?>
+            </div>
+            <div class="detail-item">
+                <strong>Fecha:</strong> <?php echo date('d/m/Y', strtotime($reserva['FechaReserva'])); ?>
+            </div>
+            <div class="detail-item">
+                <strong>Horario:</strong> 
+                <?php echo date('H:i', strtotime($reserva['HoraInicioReserva'])) . ' - ' . 
+                           date('H:i', strtotime($reserva['HoraFinReserva'])); ?>
+            </div>
+            <div class="detail-item">
+                <strong>Monto Pagado:</strong> $<?php echo number_format($reserva['Monto'], 0, ',', '.'); ?> CLP
+            </div>
+        </div>
+
+        <p>Se ha enviado un correo electrónico con los detalles de tu reserva.</p>
+        
+        <a href="index.php" class="back-button">Volver al Inicio</a>
+    </div>
+</body>
+</html>
