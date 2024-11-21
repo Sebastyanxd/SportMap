@@ -12,7 +12,7 @@
 <body>
 
 
-<header class="header">
+    <header class="header">
         <a href="#home" class="logo"> Sport
             <span>Maps</span></a>
 
@@ -25,18 +25,21 @@
             <a href="agendar.php">Agendar</a>
             <a href="misreservas.php">Mis reservas</a>
             <a href="logout.php">Cerrar sesion</a>
-            
+
         </nav>
     </header>
 
     <section class="home" id="home">
         <div class="home-content">
-            <h1>hi, It's <span>Maps</span></h1>
-            <h3 class="text-animation">I'm a <span>
+            <h1>Sport <span>Maps</span></h1>
+            <h3 class="text-animation">Sobre Nosotros<span>
                 </span></h3>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus accusantium aperiam molestiae. Quis
-                maxime nemo voluptas cumque assumenda libero, possimus asperiores, deserunt aliquam eveniet nesciunt
-                debitis quibusdam nulla ut et!</p>
+            <p>En SportMaps, facilitamos la búsqueda y reserva de canchas deportivas en centros comunitarios y clubes
+                deportivos de manera rápida y sencilla. A través de nuestra plataforma, los usuarios pueden seleccionar
+                su comuna, elegir el centro deportivo de su preferencia y acceder a un listado de canchas disponibles
+                junto con sus horarios. Nuestro objetivo es ofrecer un sistema de reservas ágil y accesible, ayudando a
+                los deportistas a encontrar el lugar ideal para practicar sus actividades físicas sin complicaciones.
+            </p>
 
             <div class="social-icons">
                 <a href="#"><i class='bx bx-link'></i></a>
@@ -66,10 +69,10 @@
                 <div class="timeline-data">2024
                 </div>
                 <div class="timeline-content">
-                    <h3>Valle</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas saepe illo ea sequi corporis,
-                        cumque ipsum accusamus rem tempore impedit necessitatibus adipisci! Id et, mollitia nihil illum
-                        commodi natus aut.</p>
+                    <h3>Peñaflor</h3>
+                    <p>Peñaflor ofrece una variedad de canchas y centros deportivos que incluyen instalaciones de fútbol
+                        y tenis. Los centros están ubicados cerca de parques y áreas residenciales, proporcionando un
+                        espacio ideal para el deporte y la recreación en un ambiente natural.</p>
                 </div>
 
             </div>
@@ -78,10 +81,10 @@
                 <div class="timeline-dot"></div>
                 <div class="timeline-data">2024</div>
                 <div class="timeline-content">
-                    <h3>camino del diablo</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas saepe illo ea sequi corporis,
-                        cumque ipsum accusamus rem tempore impedit necessitatibus adipisci! Id et, mollitia nihil illum
-                        commodi natus aut.</p>
+                    <h3>Talagante</h3>
+                    <p>En Talagante, contamos con canchas modernas y bien equipadas. Ubicadas en diferentes sectores de
+                        la comuna, ofrecen fácil acceso y disponibilidad de horarios, ideales para organizar torneos o
+                        simplemente disfrutar de una actividad deportiva en equipo.</p>
                 </div>
             </div>
 
@@ -89,12 +92,10 @@
                 <div class="timeline-dot"></div>
                 <div class="timeline-data">2024</div>
                 <div class="timeline-content">
-                    <h3>12 de septiembre</h>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas saepe illo ea sequi
-                            corporis,
-                            cumque ipsum accusamus rem tempore impedit necessitatibus adipisci! Id et, mollitia nihil
-                            illum
-                            commodi natus aut.</p>
+                    <h3>Cerrillos</h>
+                        <p>Cerrillos dispone de centros deportivos accesibles y bien conectados. Ofrecemos una variedad
+                            de canchas con instalaciones de calidad, tanto para prácticas como para competiciones, en un
+                            ambiente seguro y adecuado para todas las edades.</p>
                 </div>
             </div>
 
@@ -103,9 +104,7 @@
                 <div class="timeline-data">2024</div>
                 <div class="timeline-content">
                     <h3>Otros</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas saepe illo ea sequi corporis,
-                        cumque ipsum accusamus rem tempore impedit necessitatibus adipisci! Id et, mollitia nihil illum
-                        commodi natus aut.</p>
+                    <p>.......</p>
                 </div>
             </div>
 
@@ -119,46 +118,43 @@
         <div class="services-container">
             <div class="service-box">
                 <div class="service-info">
-                    <h4>Arreindo</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure quod qui nisi aut dolorem
-                        voluptates totam aliquid blanditiis consectetur veniam aliquam, maiores in architecto, maxime
-                        laudantium? Inventore consequatur sapiente aspernatur?</p>
+                    <h4>Arriendo de Canchas</h4>
+                    <p>Ofrecemos el arriendo de canchas deportivas con instalaciones de primera calidad, adaptadas para
+                        distintos deportes como fútbol y tenis. Nuestros espacios están diseñados para proporcionar una
+                        experiencia cómoda y profesional a nuestros usuarios.</p>
                 </div>
             </div>
 
             <div class="service-box">
                 <div class="service-info">
-                    <h4>Ventas</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure quod qui nisi aut dolorem
-                        voluptates totam aliquid blanditiis consectetur veniam aliquam, maiores in architecto, maxime
-                        laudantium? Inventore consequatur sapiente aspernatur?</p>
+                    <h4>Venta de Membresías</h4>
+                    <p>Disponemos de membresías mensuales y anuales que ofrecen acceso a nuestras canchas y descuentos
+                        exclusivos. Estas membresías son ideales para quienes buscan una experiencia continua y
+                        accesible en nuestras instalaciones.</p>
                 </div>
             </div>
 
             <div class="service-box">
                 <div class="service-info">
-                    <h4>estacionamiento</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure quod qui nisi aut dolorem
-                        voluptates totam aliquid blanditiis consectetur veniam aliquam, maiores in architecto, maxime
-                        laudantium? Inventore consequatur sapiente aspernatur?</p>
+                    <h4>Estacionamiento</h4>
+                    <p>Contamos con estacionamiento amplio y seguro para nuestros clientes. Así podrás disfrutar de tu
+                        tiempo en nuestras canchas sin preocupaciones sobre la seguridad de tu vehículo.</p>
                 </div>
             </div>
 
             <div class="service-box">
                 <div class="service-info">
-                    <h4>arriendo de balon</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure quod qui nisi aut dolorem
-                        voluptates totam aliquid blanditiis consectetur veniam aliquam, maiores in architecto, maxime
-                        laudantium? Inventore consequatur sapiente aspernatur?</p>
+                    <h4>Arriendo de Balones</h4>
+                    <p>Para tu conveniencia, ofrecemos balones en arriendo para que siempre dispongas del equipamiento
+                        necesario para tu práctica deportiva, incluso si olvidas traer el tuyo.</p>
                 </div>
             </div>
 
             <div class="service-box">
                 <div class="service-info">
                     <h4>Forma de pago</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure quod qui nisi aut dolorem
-                        voluptates totam aliquid blanditiis consectetur veniam aliquam, maiores in architecto, maxime
-                        laudantium? Inventore consequatur sapiente aspernatur?</p>
+                    <p>Aceptamos diversas formas de pago, incluyendo tarjetas de crédito, débito y pagos en efectivo,
+                        para que puedas realizar tus transacciones de manera rápida y segura.</p>
                 </div>
             </div>
         </div>
@@ -221,30 +217,25 @@
 
     <section class="contact" id="contact">
         <h2 class="heading">contact <span>Me</span>
-        </h2> 
+        </h2>
 
         <form action="">
             <div class="input-group">
                 <div class="input-box">
-                    <input type ="text"
-                    placeholder="Full Name">
-                    <input type="email"
-                    placeholder="Email">
+                    <input type="text" placeholder="Full Name">
+                    <input type="email" placeholder="Email">
                 </div>
                 <div class="input-box">
-                    <input type="number"
-                    placeholder="Phone Number">
-                    <input type="text"
-                    placeholder="Subject">
+                    <input type="number" placeholder="Phone Number">
+                    <input type="text" placeholder="Subject">
                 </div>
             </div>
 
             <div class="input-group-2">
-                <textarea name="" id="" cols="30" rows="10" 
-                placeholder="Your Message"></textarea>
+                <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
                 <input type="submit" value="Send Messenge" class="btn">
             </div>
-        </form>    
+        </form>
     </section>
 
     <footer class="footer">

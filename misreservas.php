@@ -53,146 +53,288 @@ $resultado = $stmt->get_result();
     <script src="https://sdk.mercadopago.com/js/v2"></script>
     
     <style>
-        /* Estilo de la tarjeta de cada reserva */
-        .reserva-card {
-            background-color: grey;
-            border: 1px solid #e3e3e3;
-            border-radius: 10px;
+        .container {
+            max-width: 1200px;
+            margin: 120px auto 50px auto;
             padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-            width: 100%;
-            font-size: 1.20rem;
+            background-color: #1f242d;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .titulo { 
+            font-size: 4rem; 
+            text-align: center; 
+            margin: 3rem 0; 
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .titulo span {
+            color: #0ef;
+        }
+
+        .reserva-card {
+            background: linear-gradient(145deg, #2a303c, #242832);
+            border: 1px solid #363d4a;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reserva-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #0ef;
+            transition: width 0.3s ease;
         }
 
         .reserva-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
 
-        /* Encabezado de la tarjeta */
+        .reserva-card:hover::before {
+            width: 8px;
+        }
+
         .reserva-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-            color: #000;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #363d4a;
+        }
+
+        .reserva-header h2 {
+            color: #fff;
+            font-size: 3rem;
+            font-weight: 600;
         }
 
         .estado-reserva {
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .estado-pendiente {
-            background-color: #ffcc00;
+            background-color: #ffd60a;
             color: #000;
         }
 
         .estado-confirmada {
-            background-color: #28a745;
+            background-color: #00b4d8;
             color: #fff;
         }
 
         .estado-cancelada {
-            background-color: #dc3545;
+            background-color: #ef233c;
             color: #fff;
         }
 
         .estado-completada {
-            background-color: #17a2b8;
+            background-color: #2ecc71;
             color: #fff;
         }
 
-        /* Estilo de los detalles de la reserva */
         .reserva-detalles {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 20px 0;
+            color: #fff;
         }
 
-        /* Footer de la tarjeta */
+        .reserva-detalles div {
+            padding: 15px;
+            background-color: #2a303c;
+            border-radius: 10px;
+            border: 1px solid #363d4a;
+        }
+
+        .reserva-detalles h2,
+        .reserva-detalles p {
+            margin: 10px 0;
+            font-size: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .reserva-detalles strong {
+            color: #0ef;
+            font-weight: 600;
+        }
+
         .reserva-footer {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #363d4a;
+            color: #fff;
         }
 
-        /* Contenedor de la página */
-        .container {
-            max-width: 95%;
-            margin: 120px auto 50px auto;
-            padding: 20px;
-            background-color: #343a40;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        .timestamp {
+            font-size: 0.9rem;
+            color: #8b949e;
         }
 
-        /* Título principal */
-        .page-title {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #333;
+        .timestamp h2 small {
+            display: block;
+            margin-bottom: 5px;
         }
 
-        /* Mensaje para cuando no hay reservas */
+        .payment-button {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .payment-button button {
+            background-color: #0ef;
+            color: #1f242d;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-button button:hover {
+            background-color: #00c8d4;
+            transform: translateY(-2px);
+        }
+
         .no-reservas {
             text-align: center;
-            padding: 40px;
-            background-color: grey;
-            border-radius: 10px;
-            margin: 20px auto;
+            padding: 50px;
+            background: linear-gradient(145deg, #2a303c, #242832);
+            border-radius: 15px;
+            color: #fff;
+            margin: 40px auto;
             max-width: 600px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            font-size: 2rem;
         }
 
-        /* Botón de volver */
+        .no-reservas h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #0ef;
+        }
+
+        .no-reservas p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
         .volver-btn {
             display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
+            padding: 12px 30px;
+            background-color: #0ef;
+            color: #1f242d;
             text-decoration: none;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            transition: background-color 0.3s;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
 
         .volver-btn:hover {
-            background-color: #0056b3;
+            background-color: #00c8d4;
+            transform: translateY(-2px);
         }
 
-        /* Estilo de la marca de tiempo */
-        .timestamp {
-            font-size: 0.85em;
-            color: blue;
+        @media (max-width: 768px) {
+            .container {
+                margin: 100px 15px 30px 15px;
+            }
+
+            .titulo {
+                font-size: 3rem;
+            }
+
+            .reserva-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .reserva-detalles {
+                grid-template-columns: 1fr;
+            }
+
+            .reserva-footer {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
         }
 
-        /* Título de la página */
-        .titulo { 
-            font-size: 8rem; 
-            text-align: center; 
-            margin: 5rem 0; 
-        }
+        .cancelar-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+}
 
-        /* Estilo para el contenedor del botón de pago */
-        .payment-button {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-            display: flex;
-            justify-content: flex-end;
-        }
+.cancelar-btn:hover {
+    background-color: #c82333;
+}
+
+.cancelar-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
     </style>
+
+<script>
+function cancelarReserva(reservaID) {
+    if (!confirm('¿Estás seguro de que deseas cancelar esta reserva?')) {
+        return;
+    }
+
+    fetch('cancelar_reserva.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'reservaID=' + reservaID
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            location.reload();
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(error => {
+        alert('Error al procesar la solicitud');
+        console.error('Error:', error);
+    });
+}
+</script>
 </head>
 <body>
     <header class="header">
-        <a href="index.php" class="logo">Sport<span>Maps</span></a>
+        <a href="inicio.php" class="logo">Sport<span>Maps</span></a>
         <i class='bx bx-menu' id="menu-icon"></i>
         <nav class="navbar">
             <a href="index.php" class="active">Home</a>
@@ -252,7 +394,10 @@ $resultado = $stmt->get_result();
                         <div>
                             <p><strong>Monto Total:</strong> $<?php echo number_format((int)$reserva['MontoTotal'], 0, ',', '.'); ?></p>
                         </div>
+
+                        
                     </div>
+                    
 
                     <?php if ($reserva['EstadoReserva'] !== 'cancelada' && $reserva['MetodoPago'] !== 'MercadoPago'): ?>
                     <div class="payment-button">
@@ -261,7 +406,7 @@ $resultado = $stmt->get_result();
                             const mp_<?php echo $reserva['ReservaID']; ?> = new MercadoPago('APP_USR-9545fb7d-408f-4d69-932e-dcf43beb6e9c', {
                                 locale: 'es-CL'
                             });
-
+                        
                             mp_<?php echo $reserva['ReservaID']; ?>.checkout({
                                 preference: {
                                     id: '<?php echo $preference->id; ?>'
@@ -271,8 +416,17 @@ $resultado = $stmt->get_result();
                                     label: 'Pagar con Mercado Pago'
                                 }
                             });
+
+
                         </script>
+                        
                     </div>
+                    <button 
+                class="cancelar-btn" 
+                onclick="cancelarReserva(<?php echo $reserva['ReservaID']; ?>)"
+            >
+                Cancelar Reserva
+            </button>
                     <?php endif; ?>
                 </div>
             <?php endwhile; ?>
@@ -284,5 +438,7 @@ $resultado = $stmt->get_result();
             </div>
         <?php endif; ?>
     </div>
+
+    
 </body>
 </html>

@@ -29,24 +29,229 @@ $sql_horarios_disponibles = "
 ";
 ?>
 
-
-<!DOCTYPE html>
-<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendar Hora</title>
-    <link rel="stylesheet" href="style3.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
-    /* Estilos CSS */
-    body { font-family: Arial, sans-serif; background-color: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-size: 18px; } 
-    form { background-color: #333; padding: 30px; border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.2); width: 100%; max-width: 600px; margin-left: 50px; } 
-    .input-group { display: flex; flex-wrap: wrap; justify-content: space-between; margin-bottom: 30px; } .input-box { width: 100%; margin-bottom: 20px; } 
-    select, input[type="date"], input[type="submit"] { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 16px; } 
-    input[type="submit"] { background-color: #4CAF50; color: white; border: none; cursor: pointer; font-size: 18px; padding: 15px 20px; } input[type="submit"]
-    :hover { background-color: #45a049; } 
-    label { display: block; margin-bottom: 10px; font-weight: bold; font-size: 18px; color: #fff; } 
-    .titulo { font-size: 8rem; text-align: center; margin: 5rem 0; margin-top: 400px; } 
+        :root {
+            --primary-color: #00F7FF;
+            --background-dark: #1A1D21;
+            --card-background: #282C34;
+            --text-light: #ffffff;
+            --text-gray: #8A8F98;
+            --border-radius: 12px;
+            --spacing-sm: 10px;
+            --spacing-md: 20px;
+            --spacing-lg: 30px;
+            --pending-yellow: #FFD700;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--background-dark);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: var(--text-light);
+        }
+
+        .header {
+            background: var(--background-dark);
+            padding: 15px 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 90%;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .navbar a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: var(--spacing-md);
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: var(--primary-color);
+        }
+
+        .agendar {
+            padding-top: 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 20px 20px;
+        }
+
+        .titulo {
+            font-size: 5rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+            margin-top:20px
+        }
+
+        .titulo span {
+            color: var(--primary-color);
+        }
+
+        .booking-container {
+            display: flex;
+            gap: var(--spacing-lg);
+            padding: var(--spacing-lg);
+        }
+
+        .map-container {
+            flex: 1;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: var(--card-background);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 650px;
+            border: none;
+        }
+
+        .form-container {
+            flex: 1;
+            background: var(--card-background);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .input-box {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .input-box label {
+            display: block;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+            font-size: 2rem;
+            font-weight: 500;
+        }
+
+        .input-box select,
+        .input-box input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .input-box select option {
+            background: var(--card-background);
+            color: var(--text-light);
+        }
+
+        .input-box select:focus,
+        .input-box input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .price-display {
+            grid-column: 1 / -1;
+            background: rgba(255, 255, 255, 0.05);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            margin: var(--spacing-md) 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-display label {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        #precioPorHora {
+            color: var(--text-light);
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .submit-button {
+            grid-column: 1 / -1;
+            background-color: var(--primary-color);
+            color: var(--background-dark);
+            border: none;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            font-size: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 1200px) {
+            .booking-container {
+                flex-direction: column;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Status badge styles */
+        .status-badge {
+            background: var(--pending-yellow);
+            color: var(--background-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Created date style */
+        .created-date {
+            color: var(--text-gray);
+            font-size: 0.8rem;
+            margin-top: var(--spacing-md);
+        }
     </style>
     
     <script>
@@ -148,35 +353,33 @@ $sql_horarios_disponibles = "
     <link rel="stylesheet" href="style3.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
+
 <body>
 
-
-<header class="header">
-    <a href="index.php" class="logo"> Sport<span>Maps</span></a>
-    <i class='bx bx-menu' id="menu-icon"></i>
-    <nav class="navbar">
-            <a href="index.php" class="active">Home</a>
+    <header class="header">
+        <a href="index.php" class="logo">Sport<span>Maps</span></a>
+        <nav class="navbar">
+            <a href="index.php">Home</a>
             <a href="index.php">Servicios</a>
             <a href="index.php">Contacto</a>
-            <a href="agendar.php">Agendar</a>
+            <a href="agendar.php" class="active">Agendar</a>
             <a href="misreservas.php">Mis reservas</a>
-            <a href="logout.php">Cerrar sesion</a>
-            
+            <a href="logout.php">Cerrar sesión</a>
         </nav>
-</header>
+    </header>
 
-<section class="agendar" id="agendar">
-    <h2 class="titulo">Agendar <span>Cancha</span></h2> 
+    <section class="agendar">
+        <h2 class="titulo">MIS <span>RESERVAS</span></h2> 
 
-    <div style="display: flex;">
-        <!-- Mapa -->
-        <div style="margin-right: 20px;">
-            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1E4F6XPg1q4FUiPmHeiCKJBQ0Spoir8A&ehbc=2E312F" width="640" height="650" style="border: none;"></iframe>
-        </div>
+        <div class="booking-container">
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1E4F6XPg1q4FUiPmHeiCKJBQ0Spoir8A&ehbc=2E312F"></iframe>
+            </div>
 
-        <form method="post" action="reservar.php">
+        <form method="post" action="reservar.php" class="form-container">
             
-            <div class="input-group">
+            <div class="form-grid">
             <div class="input-box">
                     <label for="comuna">Comuna:</label>
                     <select name="comuna" id="comuna" onchange="cargarCentros()" required>
@@ -189,54 +392,53 @@ $sql_horarios_disponibles = "
                         }
                         ?>
                     </select>
-                </div>
-            <div class="input-box">
-                    <label for="centroID">Centro Deportivo:</label>
-                    <select name="centroID" id="centroID" onchange="cargarCanchas()" required>
-                        <option value="">Seleccione un Centro</option>
-                    </select>
-                </div>
-                <div class="input-box">
-                    <label for="canchaID">Cancha:</label>
-                    <select name="canchaID" id="canchaID" onchange="cargarHorarios(); mostrarPrecio();" required>
-                        <option value="">Seleccione una Cancha</option>
-                    </select>
-                </div>
-                <div class="input-box">
-                    <label for="fechaReserva">Fecha de Reserva:</label>
-                    <input type="date" id="fechaReserva" name="fechaReserva" required>
-                </div>
-                <div class="input-box">
-                    <label for="horarioID">Horario:</label>
-                    <select name="horarioID" id="horarioID" required>
-                        <option value="">Seleccione un Horario</option>
-                        <!-- Aquí irán las opciones de horarios -->
-                    </select>
-                </div>
-                <div class="input-box">
-                    <label for="precioPorHora">Precio por Hora:</label>
-                    <span id="precioPorHora">0.00</span>
-                </div>
-            </div>
-            
-                
-                
-            <div class="input-group">
-                <div class="input-box">
-                    <label for="metodoPago">Método de Pago:</label>
-                    <select name="metodoPago" id="metodoPago" required>
-                        <option value="">Seleccione un Método de Pago</option>
-                        <option value="efectivo">Efectivo</option>
-                        <option value="tarjeta">Tarjeta de Crédito/Débito</option>
-                    </select>
-                </div>
             </div>
 
-            <input type="submit" value="Reservar">
-        </form>
-    </div>
-</section>
+                    <div class="input-box">
+                        <label for="centroID">Centro Deportivo:</label>
+                        <select name="centroID" id="centroID" onchange="cargarCanchas()" required>
+                            <option value="">Seleccione un Centro</option>
+                        </select>
+                    </div>
 
+                    <div class="input-box">
+                        <label for="canchaID">Cancha:</label>
+                        <select name="canchaID" id="canchaID" onchange="cargarHorarios(); mostrarPrecio();" required>
+                            <option value="">Seleccione una Cancha</option>
+                        </select>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="fechaReserva">Fecha de Reserva:</label>
+                        <input type="date" id="fechaReserva" name="fechaReserva" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="horarioID">Horario:</label>
+                        <select name="horarioID" id="horarioID" required>
+                            <option value="">Seleccione un Horario</option>
+                        </select>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="metodoPago">Método de Pago:</label>
+                        <select name="metodoPago" id="metodoPago" required>
+                            <option value="">Seleccione un Método de Pago</option>
+                            <option value="efectivo">Efectivo</option>
+                            <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                        </select>
+                    </div>
+
+                    <div class="price-display">
+                        <label for="precioPorHora">Precio por Hora:</label>
+                        <div id="precioPorHora">$0.00</div>
+                    </div>
+
+                    <button type="submit" class="submit-button">Reservar Ahora</button>
+                </div>
+            </form>
+        </div>
+    </section>
 </body>
 </html>
 

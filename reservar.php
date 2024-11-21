@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // El resto del código permanece igual
-    $sql_verificar_limite = "SELECT COUNT(*) as total FROM Reservas WHERE UsuarioID = ?";
+    $sql_verificar_limite = "SELECT COUNT(*) as total FROM Reservas WHERE UsuarioID = ? AND Estadoreserva = 'pendiente'";
     $stmt_verificar_limite = $conexion->prepare($sql_verificar_limite);
     $stmt_verificar_limite->bind_param("i", $usuarioID);
     $stmt_verificar_limite->execute();

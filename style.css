@@ -5,7 +5,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f5f5f5; /* Fondo oscuro */
+    background-color: #ffffff; /* Fondo oscuro */
 }
 .header .logo {
     height: 5px; /* Ajusta el tamaño del logo */
