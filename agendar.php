@@ -370,7 +370,7 @@ $sql_horarios_disponibles = "
     </header>
 
     <section class="agendar">
-        <h2 class="titulo">MIS <span>RESERVAS</span></h2> 
+        <h2 class="titulo">HACER UNA <span>RESERVA</span></h2> 
 
         <div class="booking-container">
             <div class="map-container">
@@ -423,8 +423,6 @@ $sql_horarios_disponibles = "
                     <div class="input-box">
                         <label for="metodoPago">Método de Pago:</label>
                         <select name="metodoPago" id="metodoPago" required>
-                            <option value="">Seleccione un Método de Pago</option>
-                            <option value="efectivo">Efectivo</option>
                             <option value="tarjeta">Tarjeta de Crédito/Débito</option>
                         </select>
                     </div>
