@@ -7,6 +7,29 @@ body{
     min-height: 100vh;
     background-color: #ffffff; /* Fondo oscuro */
 }
+.logo-text-container {
+    display: flex;
+    flex-direction: row-reverse; /* Invierte el orden: logo a la derecha */
+    align-items: center; /* Centra verticalmente los elementos */
+    gap: 15px; /* Espacio entre el logo y el texto */
+    margin: 0; /* Elimina márgenes externos */
+    padding: 0; /* Elimina relleno externo */
+}
+
+.logo {
+    
+    max-width: 180px; /* Ajusta el tamaño del logo */
+    height: auto; /* Mantén las proporciones */
+}
+
+.logo-text-container h2 {
+    
+    font-size: 28px; /* Ajusta el tamaño del texto si es necesario */
+    color: #0D0D0D; /* Color del texto */
+}
+
+
+
 .header .logo {
     height: 5px; /* Ajusta el tamaño del logo */
     width: auto;
@@ -33,6 +56,7 @@ form p {
     color: #5e5e5e;
     margin-bottom: 35px;
 }
+
 
 .input-wrapper {
     position: relative;
@@ -95,6 +119,9 @@ input::placeholder {
     color: #e02d00;
     font-size: 18px;
 }
+
+
+
 
 @media(max-width:991px) {
     body {

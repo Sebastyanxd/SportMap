@@ -654,10 +654,10 @@ footer ul li a{
   font-family: "Poppins", sans-serif;
 }
 :root {
-  --bg-color: #080808;
+  --bg-color: #ffffff;
   --second-bg-color: #131313;
-  --text-color: White;
-  --main-color: #00ffee;
+  --text-color: rgb(3, 3, 3);
+  --main-color: #00ff00;
 }
 
 html{

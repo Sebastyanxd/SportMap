@@ -8,10 +8,12 @@
 </head>
 <body>
 
-    <form method="post" >
+    <form method="post" onsubmit="return validarContrasena()">
 
-    <h2>Hola</h2>
-    <p>Inicia tu registro</p>
+    <div class="logo-text-container">
+            <img src="images/logo.jpg" alt="SportMap Logo" class="logo">
+            <h2>Crear Cuenta</h2>
+            </div>
 
     <div class="input-wrapper">
         <input type="text" name="Nombre" placeholder="Nombre" required>
@@ -24,8 +26,8 @@
     </div>
 
     <div class="input-wrapper">
-        <input type="text" name="Direccion" placeholder="Dirección" required>
-        <img class="input-icon" src="images/direction.svg" alt="">
+    <input type="text" name="Direccion" placeholder="Dirección (Opcional)">
+    <img class="input-icon" src="images/direction.svg" alt="">
     </div>
 
     <div class="input-wrapper">
@@ -34,12 +36,31 @@
     </div>
 
     <div class="input-wrapper">
-        <input type="password" name="Contrasena" placeholder="Contraseña" required>
+        <input type="password" id="Contrasena" name="Contrasena" placeholder="Contraseña" required>
+        <img class="input-icon" src="images/password.svg" alt="">
+    </div>
+
+    <div class="input-wrapper">
+        <input type="password" id="ConfirmarContrasena" name="ConfirmarContrasena" placeholder="Confirmar Contraseña" required>
         <img class="input-icon" src="images/password.svg" alt="">
     </div>
 
     <input class="btn" type="submit" name="register" value="Enviar">
-    </form>
+</form>
+
+<script>
+function validarContrasena() {
+    var contrasena = document.getElementById("Contrasena").value;
+    var confirmarContrasena = document.getElementById("ConfirmarContrasena").value;
+    
+    if (contrasena !== confirmarContrasena) {
+        alert("Las contraseñas no coinciden.");
+        return false; // Impide que el formulario se envíe
+    }
+    return true; // Permite el envío del formulario
+}
+</script>
+
 
     <?php
         include("registrar.php");

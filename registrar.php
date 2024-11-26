@@ -9,7 +9,7 @@ if (isset($_POST['register'])) {
     if (
         isset($_POST['Nombre']) && strlen($_POST['Nombre']) >= 1 &&
         isset($_POST['Email']) && strlen($_POST['Email']) >= 1 &&
-        isset($_POST['Direccion']) && strlen($_POST['Direccion']) >= 1 &&
+        isset($_POST['Direccion']) && strlen($_POST['Direccion']) >= 0 &&
         isset($_POST['Telefono']) && strlen($_POST['Telefono']) >= 1 &&
         isset($_POST['Contrasena']) && strlen($_POST['Contrasena']) >= 1 
     ) {

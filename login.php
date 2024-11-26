@@ -19,8 +19,16 @@ if (isset($_SESSION['email'])) {
 <body>
 
     <form method="post" >
+    
 
+
+        <div class="logo-text-container">
+    <img src="images/logo.jpg" alt="SportMap Logo" class="logo">
     <h2>Bienvenido a "SportMap"</h2>
+    </div>
+
+
+
     <?php
         include("controladorLogin.php");
         include("conexion.php");
@@ -39,7 +47,7 @@ if (isset($_SESSION['email'])) {
 
     <div class="input-wrapper">
         <a href="recuperar.html">Olvidé mi contraseña</a>
-        <a href="registro.php">No tienes cuenta?</a>
+        <a href="registro.php">           No tienes cuenta?</a>
     </div>
 
     <input class="btn" type="submit" name="login" value="INICIAR SESION">
