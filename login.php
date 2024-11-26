@@ -23,7 +23,7 @@ if (isset($_SESSION['email'])) {
 
 
         <div class="logo-text-container">
-    <img src="images/logo.jpg" alt="SportMap Logo" class="logo">
+    <img src="images/logo.png" alt="SportMap Logo" class="logo">
     <h2>Bienvenido a "SportMap"</h2>
     </div>
 

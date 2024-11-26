@@ -36,7 +36,7 @@ $sql_horarios_disponibles = "
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
         :root {
-            --primary-color: #00F7FF;
+            --primary-color:#2e8131;
             --background-dark: #1A1D21;
             --card-background: #282C34;
             --text-light: #ffffff;
@@ -71,11 +71,21 @@ $sql_horarios_disponibles = "
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        .logout-icon {
+            width: 24px;
+            height: 24px;
+            margin-left: 15px;
+            vertical-align: middle;
+        }
+
         .logo {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 55px; /* Adjust the height as needed */
+            margin-left: 10px; /* Adds some space between text and logo */
         }
 
         .logo span {
@@ -108,7 +118,7 @@ $sql_horarios_disponibles = "
             color: var(--text-light);
             margin-bottom: var(--spacing-lg);
             text-align: center;
-            margin-top:20px
+            margin-top:25px
         }
 
         .titulo span {
@@ -357,20 +367,38 @@ $sql_horarios_disponibles = "
 
 <body>
 
-    <header class="header">
-        <a href="index.php" class="logo">Sport<span>Maps</span></a>
-        <nav class="navbar">
-            <a href="index.php">Home</a>
-            <a href="index.php">Servicios</a>
-            <a href="index.php">Contacto</a>
-            <a href="agendar.php" class="active">Agendar</a>
-            <a href="misreservas.php">Mis reservas</a>
-            <a href="logout.php">Cerrar sesión</a>
-        </nav>
-    </header>
+<header class="header">
+    <a href="index.php" class="logo"> 
+        Sport 
+        <span>Maps</span>
+        <img src="images/logo.png" alt="SportMaps Logo" class="logo-image">
+    </a>
+            
+    <i class='bx bx-menu' id="menu-icon"></i>
+
+    <nav class="navbar">
+        <a href="index.php" >Home</a>
+        <a href="#services">Servicios</a>
+        <a href="#contact">Contacto</a>
+        <a href="agendar.php" class="active">Agendar</a>
+        <a href="misreservas.php" >Mis reservas</a>
+        
+        <?php 
+        // Verificar si hay un usuario con sesión iniciada
+        if(isset($_SESSION['usuarioID'])) {
+            echo '<a href="miperfil.php">Mi Perfil</a>';
+            echo '<a href="logout.php">Cerrar sesion';
+            echo '<img src="images/cerrar-sesion.png" alt="Logout" class="logout-icon">';
+            echo '</a>';
+        } else {
+            echo '<a href="login.php">Iniciar sesion</a>';
+        }
+        ?>
+    </nav>
+</header>
 
     <section class="agendar">
-        <h2 class="titulo">HACER UNA <span>RESERVA</span></h2> 
+        <h2 class="titulo" style="color: black;" >HACER UNA <span>RESERVA</span></h2> 
 
         <div class="booking-container">
             <div class="map-container">

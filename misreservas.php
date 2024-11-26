@@ -53,254 +53,30 @@ $resultado = $stmt->get_result();
     <script src="https://sdk.mercadopago.com/js/v2"></script>
     
     <style>
-        .container {
-            max-width: 1200px;
-            margin: 120px auto 50px auto;
-            padding: 20px;
-            background-color: #1f242d;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        .logout-icon {
+            width: 24px;
+            height: 24px;
+            margin-left: 15px;
+            vertical-align: middle;
         }
 
-        .titulo { 
-            font-size: 4rem; 
-            text-align: center; 
-            margin: 3rem 0; 
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .titulo span {
-            color: #0ef;
-        }
-
-        .reserva-card {
-            background: linear-gradient(145deg, #2a303c, #242832);
-            border: 1px solid #363d4a;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .reserva-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: #0ef;
-            transition: width 0.3s ease;
-        }
-
-        .reserva-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
-        .reserva-card:hover::before {
-            width: 8px;
-        }
-
-        .reserva-header {
+        .logo {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #363d4a;
         }
 
-        .reserva-header h2 {
-            color: #fff;
-            font-size: 3rem;
+        .logo-image {
+            height: 60px; /* Adjust the height as needed */
+            margin-left: 10px; /* Adds some space between text and logo */
+        }
+        .titulo {
+            font-size: 5rem;
             font-weight: 600;
-        }
-
-        .estado-reserva {
-            padding: 8px 16px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .estado-pendiente {
-            background-color: #ffd60a;
-            color: #000;
-        }
-
-        .estado-confirmada {
-            background-color: #00b4d8;
-            color: #fff;
-        }
-
-        .estado-cancelada {
-            background-color: #ef233c;
-            color: #fff;
-        }
-
-        .estado-completada {
-            background-color: #2ecc71;
-            color: #fff;
-        }
-
-        .reserva-detalles {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 20px 0;
-            color: #fff;
-        }
-
-        .reserva-detalles div {
-            padding: 15px;
-            background-color: #2a303c;
-            border-radius: 10px;
-            border: 1px solid #363d4a;
-        }
-
-        .reserva-detalles h2,
-        .reserva-detalles p {
-            margin: 10px 0;
-            font-size: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .reserva-detalles strong {
-            color: #0ef;
-            font-weight: 600;
-        }
-
-        .reserva-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #363d4a;
-            color: #fff;
-        }
-
-        .timestamp {
-            font-size: 0.9rem;
-            color: #8b949e;
-        }
-
-        .timestamp h2 small {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .payment-button {
-            margin-top: 20px;
-            text-align: right;
-        }
-
-        .payment-button button {
-            background-color: #0ef;
-            color: #1f242d;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .payment-button button:hover {
-            background-color: #00c8d4;
-            transform: translateY(-2px);
-        }
-
-        .no-reservas {
-            text-align: center;
-            padding: 50px;
-            background: linear-gradient(145deg, #2a303c, #242832);
-            border-radius: 15px;
-            color: #fff;
-            margin: 40px auto;
-            max-width: 600px;
-        }
-
-        .no-reservas h2 {
-            font-size: 2rem;
+            color: #white;
             margin-bottom: 15px;
-            color: #0ef;
+            text-align: center;
+            margin-top:00px
         }
-
-        .no-reservas p {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-        }
-
-        .volver-btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: #0ef;
-            color: #1f242d;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .volver-btn:hover {
-            background-color: #00c8d4;
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                margin: 100px 15px 30px 15px;
-            }
-
-            .titulo {
-                font-size: 3rem;
-            }
-
-            .reserva-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-
-            .reserva-detalles {
-                grid-template-columns: 1fr;
-            }
-
-            .reserva-footer {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-        }
-
-        .cancelar-btn {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-right: 10px;
-}
-
-.cancelar-btn:hover {
-    background-color: #c82333;
-}
-
-.cancelar-btn:disabled {
-    background-color: #6c757d;
-    cursor: not-allowed;
-}
     </style>
 
 <script>
@@ -333,20 +109,38 @@ function cancelarReserva(reservaID) {
 </script>
 </head>
 <body>
-    <header class="header">
-        <a href="inicio.php" class="logo">Sport<span>Maps</span></a>
-        <i class='bx bx-menu' id="menu-icon"></i>
-        <nav class="navbar">
-            <a href="index.php" class="active">Home</a>
-            <a href="index.php">Servicios</a>
-            <a href="index.php">Contacto</a>
-            <a href="agendar.php">Agendar</a>
-            <a href="misreservas.php">Mis reservas</a>
-            <a href="logout.php">Cerrar sesion</a>
-        </nav>
-    </header>
+<header class="header">
+    <a href="index.php" class="logo"> 
+        Sport 
+        <span>Maps</span>
+        <img src="images/logo.png" alt="SportMaps Logo" class="logo-image">
+    </a>
+            
+    <i class='bx bx-menu' id="menu-icon"></i>
+
+    <nav class="navbar">
+        <a href="index.php" >Home</a>
+        <a href="#services">Servicios</a>
+        <a href="#contact">Contacto</a>
+        <a href="agendar.php">Agendar</a>
+        <a href="misreservas.php" class="active">Mis reservas</a>
+        
+        <?php 
+        // Verificar si hay un usuario con sesión iniciada
+        if(isset($_SESSION['usuarioID'])) {
+            echo '<a href="miperfil.php">Mi Perfil</a>';
+            echo '<a href="logout.php">Cerrar sesion';
+            echo '<img src="images/cerrar-sesion.png" alt="Logout" class="logout-icon">';
+            echo '</a>';
+        } else {
+            echo '<a href="login.php">Iniciar sesion</a>';
+        }
+        ?>
+    </nav>
+</header>
+
     <div class="container">
-        <h2 class="titulo">Mis <span>Reservas</span></h2>
+    <h2 class="titulo">Mis <span>Reservas</span></h2>
 
         <?php if ($resultado->num_rows > 0): ?>
             <?php while ($reserva = $resultado->fetch_assoc()): 

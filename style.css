@@ -1,11 +1,15 @@
-body{
+body {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #ffffff; /* Fondo oscuro */
+    background-image: url('./images/fondofutbol.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 .logo-text-container {
     display: flex;
@@ -41,7 +45,7 @@ form{
     border-radius: 25px;
     display: flex;
     flex-direction: column;
-    
+    background-color: white;
     width: 380px;
 }
 

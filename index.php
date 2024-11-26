@@ -1,3 +1,24 @@
+<?php
+session_start(); // Iniciar sesión
+
+// Páginas que requieren inicio de sesión
+$paginasProtegidas = [
+    'agendar.php', 
+    'misreservas.php', 
+    'miperfil.php'
+];
+
+// Obtener el nombre de la página actual
+$paginaActual = basename($_SERVER['PHP_SELF']);
+
+// Verificar si la página actual está en la lista de páginas protegidas
+if (in_array($paginaActual, $paginasProtegidas) && !isset($_SESSION['usuarioID'])) {
+    // Redirigir al login si no hay sesión iniciada
+    header("Location: login.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,29 +28,100 @@
     <title>SportMaps</title>
     <link rel="stylesheet" href="style3.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .logout-icon {
+            width: 24px;
+            height: 24px;
+            margin-left: 15px;
+            vertical-align: middle;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 60px; /* Adjust the height as needed */
+            margin-left: 10px; /* Adds some space between text and logo */
+        }
+
+        /* Estilos para el enlace activo */
+        .navbar a.active {
+            color: #22ad27; /* Cambia este color al que prefieras */
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
 
-
-    <header class="header">
-        <a href="#home" class="logo"> Sport
-            <span>Maps</span></a>
+<header class="header">
+    <a href="index.php" class="logo"> 
+        Sport 
+        <span>Maps</span>
+        <img src="images/logo.png" alt="SportMaps Logo" class="logo-image">
+    </a>
             
+    <i class='bx bx-menu' id="menu-icon"></i>
 
-        <i class='bx bx-menu' id="menu-icon"></i>
+    <nav class="navbar">
+        <a href="index.php" id="home-link">Home</a>
+        <a href="#services" id="services-link">Servicios</a>
+        <a href="#contact" id="contact-link">Contacto</a>
+        <a href="agendar.php">Agendar</a>
+        <a href="misreservas.php">Mis reservas</a>
+        
+        <?php 
+        // Verificar si hay un usuario con sesión iniciada
+        if(isset($_SESSION['usuarioID'])) {
+            echo '<a href="miperfil.php">Mi Perfil</a>';
+            echo '<a href="logout.php">Cerrar sesion';
+            echo '<img src="images/cerrar-sesion.png" alt="Logout" class="logout-icon">';
+            echo '</a>';
+        } else {
+            echo '<a href="login.php">Iniciar sesion</a>';
+        }
+        ?>
+    </nav>
+</header>
 
-        <nav class="navbar">
-            <a href="index.php" class="active">Home</a>
-            <a href="#services">Servicios</a>
-            <a href="#contact">Contacto</a>
-            <a href="agendar.php">Agendar</a>
-            <a href="misreservas.php">Mis reservas</a>
-            <a href="logout.php">Cerrar sesion</a>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Función para manejar la navegación por secciones
+    function setActiveLink() {
+        // Remover active de todos los links
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.classList.remove('active');
+        });
 
-        </nav>
-    </header>
+        // Obtener el hash de la URL
+        const hash = window.location.hash;
 
+        // Agregar active al link correspondiente
+        if (hash === '#services') {
+            document.getElementById('services-link').classList.add('active');
+        } else if (hash === '#contact') {
+            document.getElementById('contact-link').classList.add('active');
+        } else if (hash === '' || hash === '#home') {
+            document.getElementById('home-link').classList.add('active');
+        }
+    }
+
+    // Llamar a la función inicialmente
+    setActiveLink();
+
+    // Escuchar cambios en el hash
+    window.addEventListener('hashchange', setActiveLink);
+});
+</script>
+<?php
+// Solo redirigir si se intenta acceder a páginas específicas
+if (!isset($_SESSION['usuarioID'])) {
+    // Esto podría estar en otras páginas como agendar.php o misreservas.php
+    // En index.php, se mantiene la visibilidad
+}
+?>
     <section class="home" id="home">
         <div class="home-content">
             <h1>Sport <span>Maps</span></h1>
@@ -54,10 +146,11 @@
                 <a href="#contact" class="btn">Contacto</a>
             </div>
         </div>
+        <a href="agendar.php">
         <div class="home-img">
-            <img src="images/images2/bernabeu.png" alt="">
+            <img src="images/images2/bernabeu.png" alt="" >
         </div>
-
+        </a> 
     </section>
 
     <section class="education" id="education">
@@ -114,7 +207,7 @@
     </section>
 
     <section class="services" id="services">
-        <h2 class="heading">Services</h2>
+    <h2 class="heading" style="color: black;">Servicios</h2>
 
         <div class="services-container">
             <div class="service-box">
