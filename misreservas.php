@@ -142,21 +142,21 @@ function cancelarReserva(reservaID) {
     <div class="container">
     <h2 class="titulo">Mis <span>Reservas</span></h2>
 
-        <?php if ($resultado->num_rows > 0): ?>
-            <?php while ($reserva = $resultado->fetch_assoc()): 
-                // Crear preferencia de pago para cada reserva
-                $preference = new MercadoPago\Preference();
-                
-                $item = new MercadoPago\Item();
-                $item->id = $reserva['ReservaID'];
-                $item->title = "Reserva " . $reserva['CodigoReserva'] . " - " . $reserva['NombreCentro'];
-                $item->quantity = 1;
-                $item->unit_price = (float)$reserva['MontoTotal'];
-                $item->currency_id = "CLP";
+    <?php if ($resultado->num_rows > 0): ?>
+        <?php while ($reserva = $resultado->fetch_assoc()): 
+            // Crear preferencia de pago para cada reserva
+            $preference = new MercadoPago\Preference();
+            
+            $item = new MercadoPago\Item();
+            $item->id = $reserva['ReservaID'];
+            $item->title = "Reserva " . $reserva['CodigoReserva'] . " - " . $reserva['NombreCentro'];
+            $item->quantity = 1;
+            $item->unit_price = (float)$reserva['MontoTotal'];
+            $item->currency_id = "CLP";
 
-                $preference->items = array($item);
-                $preference->save();
-            ?>
+            $preference->items = array($item);
+            $preference->save();
+        ?>
                 <div class="reserva-card">
                     <div class="reserva-header">
                         <h2>Reserva: <?php echo htmlspecialchars($reserva['CodigoReserva']); ?></h2>
@@ -193,26 +193,24 @@ function cancelarReserva(reservaID) {
                     </div>
                     
 
-                    <?php if ($reserva['EstadoReserva'] !== 'cancelada' && $reserva['MetodoPago'] !== 'MercadoPago'): ?>
-                    <div class="payment-button">
-                        <div id="checkout-btn-<?php echo $reserva['ReservaID']; ?>"></div>
-                        <script>
-                            const mp_<?php echo $reserva['ReservaID']; ?> = new MercadoPago('APP_USR-9545fb7d-408f-4d69-932e-dcf43beb6e9c', {
-                                locale: 'es-CL'
-                            });
-                        
-                            mp_<?php echo $reserva['ReservaID']; ?>.checkout({
-                                preference: {
-                                    id: '<?php echo $preference->id; ?>'
-                                },
-                                render: {
-                                    container: '#checkout-btn-<?php echo $reserva['ReservaID']; ?>',
-                                    label: 'Pagar con Mercado Pago'
-                                }
-                            });
-
-
-                        </script>
+                    <?php if ($reserva['EstadoReserva'] !== 'cancelada' && $reserva['EstadoReserva'] !== 'completada' && $reserva['MetodoPago'] !== 'MercadoPago'): ?>
+<div class="payment-button">
+    <div id="checkout-btn-<?php echo $reserva['ReservaID']; ?>"></div>
+    <script>
+        const mp_<?php echo $reserva['ReservaID']; ?> = new MercadoPago('APP_USR-9545fb7d-408f-4d69-932e-dcf43beb6e9c', {
+            locale: 'es-CL'
+        });
+    
+        mp_<?php echo $reserva['ReservaID']; ?>.checkout({
+            preference: {
+                id: '<?php echo $preference->id; ?>'
+            },
+            render: {
+                container: '#checkout-btn-<?php echo $reserva['ReservaID']; ?>',
+                label: 'Pagar con Mercado Pago'
+            }
+        });
+    </script>
                         
                     </div>
                     <button 

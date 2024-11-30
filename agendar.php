@@ -378,8 +378,8 @@ $sql_horarios_disponibles = "
 
     <nav class="navbar">
         <a href="index.php" >Home</a>
-        <a href="#services">Servicios</a>
-        <a href="#contact">Contacto</a>
+        <a href="index.php">Servicios</a>
+        <a href="index.php">Contacto</a>
         <a href="agendar.php" class="active">Agendar</a>
         <a href="misreservas.php" >Mis reservas</a>
         

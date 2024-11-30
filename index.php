@@ -256,12 +256,12 @@ if (!isset($_SESSION['usuarioID'])) {
 
     <sectiion class="testimonials" id="testimonials">
         <div class="testimonials-box">
-            <h2 class="heading">testimonials</h2>
+            <h2 class="heading">Encargados</h2>
 
             <div class="wrapper">
                 <div class="testimonial-item">
-                    <img src="images/images2/kevin.jpg" alt="">
-                    <h2>Kevin</h2>
+                    <img src="images/kevin.jpg" alt="">
+                    <h2>Kevin Leon</h2>
                     <div class="rating">
                         <i class='bx bxs-star' id="star"></i>
                         <i class='bx bxs-star' id="star"></i>
@@ -269,15 +269,13 @@ if (!isset($_SESSION['usuarioID'])) {
                         <i class='bx bxs-star' id="star"></i>
                         <i class='bx bxs-star' id="star"></i>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates itaque aut velit sequi,
-                        architecto accusamus sunt labore et laborum a ullam accusantium. Facilis, corrupti? Tempore
-                        asperiores omnis quaerat quis officia!</p>
+                    <h1><span>Cargo:</span> Programador </h1>
 
                 </div>
 
                 <div class="testimonial-item">
-                    <img src="images/images2/cabezon.png" alt="">
-                    <h2>Sebastian</h2>
+                    <img src="images/seba.jpg" alt="">
+                    <h2>Sebastian Rodriguez</h2>
                     <div class="rating">
                         <i class='bx bxs-star' id="star"></i>
                         <i class='bx bxs-star' id="star"></i>
@@ -285,15 +283,13 @@ if (!isset($_SESSION['usuarioID'])) {
                         <i class='bx bxs-star' id="star"></i>
                         <i class='bx bxs-star' id="star"></i>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates itaque aut velit sequi,
-                        architecto accusamus sunt labore et laborum a ullam accusantium. Facilis, corrupti? Tempore
-                        asperiores omnis quaerat quis officia!</p>
-
+                   <h1><span>Cargo:</span> Programador y Administrador de Bases de Datos.
+                   </h1>
                 </div>
 
                 <div class="testimonial-item">
-                    <img src="images/images2/palacios.jpg" alt="">
-                    <h2>Palacios</h2>
+                    <img src="images/palacio.jpeg" alt="">
+                    <h2>Alexander Palacios</h2>
                     <div class="rating">
                         <i class='bx bxs-star' id="star"></i>
                         <i class='bx bxs-star' id="star"></i>
@@ -301,16 +297,15 @@ if (!isset($_SESSION['usuarioID'])) {
                         <i class='bx bxs-star' id="star"></i>
                         <i class='bx bxs-star' id="star"></i>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates itaque aut velit sequi,
-                        architecto accusamus sunt labore et laborum a ullam accusantium. Facilis, corrupti? Tempore
-                        asperiores omnis quaerat quis officia!</p>
+                    <h1><span>Cargo:</span> Jefe de proyecto. <br>
+                    </h1><p></p>
                 </div>
             </div>
         </div>
     </sectiion>
 
     <section class="contact" id="contact">
-        <h2 class="heading">contact <span>Me</span>
+        <h2 class="heading">Contactanos
         </h2>
 
         <form action="">
